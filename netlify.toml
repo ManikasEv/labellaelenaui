@@ -4,6 +4,7 @@
 
 [build.environment]
   NODE_VERSION = "20"
+  VITE_API_URL = "https://labellaelenaserver.vercel.app"
 
 # SPA fallback — React Router client-side routes (e.g. /reservierung)
 [[redirects]]
