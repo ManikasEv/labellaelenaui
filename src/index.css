@@ -1,0 +1,294 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #f2f8fa;
+  --color-charcoal: #162d38;
+  --color-olive: #2d8496;
+  --color-olive-dark: #1f6575;
+  --color-terracotta: #22a3b8;
+  --color-terracotta-dark: #1a8a9e;
+  --color-gold: #8dd4e8;
+
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-sans: "DM Sans", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-cream);
+  color: var(--color-charcoal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery-thumb-scroll {
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-terracotta) color-mix(in srgb, var(--color-charcoal) 8%, transparent);
+  -webkit-overflow-scrolling: touch;
+}
+
+.gallery-thumb-scroll::-webkit-scrollbar {
+  height: 7px;
+}
+
+.gallery-thumb-scroll::-webkit-scrollbar-track {
+  margin-inline: 0.25rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-charcoal) 7%, transparent);
+}
+
+.gallery-thumb-scroll::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-terracotta), var(--color-gold));
+}
+
+.gallery-thumb-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--color-terracotta-dark);
+}
+
+.gallery-thumb-item {
+  scroll-snap-align: center;
+}
+
+@keyframes gallery-zoom-out {
+  from {
+    transform: scale(1.2);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.gallery-slide-zoom {
+  animation: gallery-zoom-out var(--gallery-duration, 5s) ease-out forwards;
+}
+
+.menu-nav {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  margin-bottom: 2.5rem;
+  padding-bottom: 0.25rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.menu-nav-link {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-charcoal) 55%, transparent);
+  padding: 0.4rem 0.85rem;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--color-charcoal) 8%, transparent);
+  white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s, background-color 0.2s;
+}
+
+.menu-nav-link:hover {
+  color: var(--color-terracotta);
+  border-color: color-mix(in srgb, var(--color-terracotta) 35%, transparent);
+  background-color: color-mix(in srgb, var(--color-terracotta) 6%, transparent);
+}
+
+.menu-nav-link-active {
+  color: var(--color-cream);
+  background-color: var(--color-terracotta);
+  border-color: var(--color-terracotta);
+}
+
+.menu-nav-link-active:hover {
+  color: var(--color-cream);
+  background-color: var(--color-terracotta-dark);
+  border-color: var(--color-terracotta-dark);
+}
+
+.menu-panel {
+  animation: menu-fade-in 0.2s ease-out;
+}
+
+@keyframes menu-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menu-category-header {
+  text-align: center;
+  margin-bottom: 1.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-olive) 18%, transparent);
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+.menu-row-line {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.menu-row-name {
+  flex-shrink: 0;
+  max-width: 78%;
+  font-size: 1.05rem;
+  line-height: 1.35;
+}
+
+.menu-row-leader {
+  flex: 1;
+  min-width: 1.5rem;
+  border-bottom: 1px dotted color-mix(in srgb, var(--color-charcoal) 18%, transparent);
+  margin-bottom: 0.25rem;
+}
+
+.menu-row-price {
+  flex-shrink: 0;
+  font-size: 1.05rem;
+  white-space: nowrap;
+}
+
+.menu-row-price::before {
+  content: 'CHF ';
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: color-mix(in srgb, var(--color-charcoal) 40%, transparent);
+  margin-right: 0.15rem;
+}
+
+.menu-row-desc {
+  margin-top: 0.2rem;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--color-charcoal) 48%, transparent);
+  font-style: italic;
+}
+
+.menu-row-tags {
+  display: flex;
+  gap: 0.35rem;
+  margin-top: 0.35rem;
+}
+
+.menu-row-tags span {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--color-olive);
+  background: color-mix(in srgb, var(--color-olive) 8%, transparent);
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.25rem;
+}
+
+.menu-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 1.25rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-charcoal) 6%, transparent);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-charcoal) 40%, transparent);
+}
+
+.menu-declaration {
+  margin-top: 1rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-charcoal) 6%, transparent);
+  padding-top: 1rem;
+}
+
+.menu-declaration-toggle {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.menu-declaration-toggle:hover {
+  color: var(--color-terracotta);
+}
+
+.menu-declaration-body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem 0.6rem;
+  margin-top: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  background: color-mix(in srgb, var(--color-cream) 80%, transparent);
+  font-size: 0.7rem;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--color-charcoal) 50%, transparent);
+  text-align: center;
+}
+
+.menu-declaration-item strong {
+  font-weight: 600;
+  color: color-mix(in srgb, var(--color-charcoal) 65%, transparent);
+}
+
+.calendar-day-closed {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 4px,
+    rgba(22, 45, 56, 0.06) 4px,
+    rgba(22, 45, 56, 0.06) 8px
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .gallery-slide-zoom {
+    animation: none;
+    transform: scale(1);
+  }
+
+  .menu-panel {
+    animation: none;
+  }
+}
