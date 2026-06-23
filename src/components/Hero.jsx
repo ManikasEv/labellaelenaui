@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import heroImage from '../assets/place1.jpg'
+import bellalogo from '../assets/bellalogo.jpg'
+import { siteName } from '../data/site'
 import { restaurantPhone, whatsappUrl } from '../data/location'
 
 export default function Hero() {
@@ -20,6 +22,15 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6">
+        <img
+          src={bellalogo}
+          alt={`${siteName} — Ristorante & Pizzeria`}
+          width={112}
+          height={112}
+          className="mx-auto mb-5 h-20 w-20 rounded-full bg-cream/95 object-contain p-2 shadow-lg ring-1 ring-cream/40 sm:mb-6 sm:h-28 sm:w-28 sm:p-2.5"
+          fetchPriority="high"
+        />
+
         <p className="mb-4 text-xs font-medium tracking-[0.22em] text-cream/80 uppercase sm:text-sm sm:tracking-[0.3em]">
           Griechisch-Italienisches Restaurant
         </p>
