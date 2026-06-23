@@ -40,10 +40,10 @@ export default function Navbar() {
             : 'bg-transparent'
       }`}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-8">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5 sm:px-6 sm:py-4 lg:px-8">
         <Link
           to="/"
-          className={`font-display text-xl tracking-wide transition-colors sm:text-2xl ${
+          className={`font-display max-w-[58%] truncate text-lg tracking-wide transition-colors sm:max-w-none sm:text-xl md:text-2xl ${
             solid
               ? 'text-charcoal hover:text-terracotta'
               : 'text-cream hover:text-gold'

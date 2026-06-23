@@ -83,12 +83,12 @@ export default function ReservationCalendar({ value, onChange, blockedDates = []
   }
 
   return (
-    <div className="h-full rounded-2xl border border-charcoal/10 bg-cream/30 p-4 sm:p-5">
+    <div className="min-w-0 rounded-2xl border border-charcoal/10 bg-cream/30 p-3 sm:p-5">
       <div className="mb-4 border-b border-charcoal/10 pb-4">
         <p className="mb-3 text-xs font-medium tracking-wider text-terracotta uppercase">
           Datum
         </p>
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-2">
           <button
             type="button"
             onClick={() => goMonth(-1)}
@@ -100,7 +100,7 @@ export default function ReservationCalendar({ value, onChange, blockedDates = []
             </svg>
           </button>
 
-          <p className="font-display text-lg capitalize text-charcoal">{monthLabel}</p>
+          <p className="font-display min-w-0 text-center text-base capitalize text-charcoal sm:text-lg">{monthLabel}</p>
 
           <button
             type="button"
@@ -161,7 +161,7 @@ export default function ReservationCalendar({ value, onChange, blockedDates = []
                   : undefined
               }
               className={[
-                'aspect-square rounded-xl text-sm font-medium transition-all',
+                'aspect-square min-h-[2.25rem] rounded-lg text-xs font-medium transition-all sm:rounded-xl sm:text-sm',
                 state === 'hidden' && 'invisible pointer-events-none',
                 selected && dayStyles.selected,
                 !selected && state === 'available' && dayStyles.available,
@@ -177,16 +177,16 @@ export default function ReservationCalendar({ value, onChange, blockedDates = []
         })}
       </div>
 
-      <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-charcoal/50">
-        <span className="flex items-center gap-1.5">
+      <div className="overflow-x-touch scrollbar-none mt-4 flex flex-nowrap items-center gap-3 pb-1 text-xs text-charcoal/50 sm:flex-wrap sm:overflow-visible sm:pb-0">
+        <span className="flex shrink-0 items-center gap-1.5">
           <span className="h-3 w-3 rounded bg-terracotta" />
           Ausgewählt
         </span>
-        <span className="flex items-center gap-1.5">
+        <span className="flex shrink-0 items-center gap-1.5">
           <span className="calendar-day-closed h-3 w-3 rounded bg-charcoal/[0.06]" />
           Geschlossen
         </span>
-        <span className="flex items-center gap-1.5">
+        <span className="flex shrink-0 items-center gap-1.5">
           <span className="h-3 w-3 rounded bg-charcoal/[0.03]" />
           Nicht verfügbar
         </span>

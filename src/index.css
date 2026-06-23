@@ -15,12 +15,14 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   font-family: var(--font-sans);
   background-color: var(--color-cream);
   color: var(--color-charcoal);
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -36,6 +38,12 @@ body {
 
 .scrollbar-none::-webkit-scrollbar {
   display: none;
+}
+
+.overflow-x-touch {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
 }
 
 .gallery-thumb-scroll {
@@ -86,9 +94,21 @@ body {
   gap: 0.5rem;
   overflow-x: auto;
   margin-bottom: 2.5rem;
-  padding-bottom: 0.25rem;
-  justify-content: center;
-  flex-wrap: wrap;
+  padding-bottom: 0.5rem;
+  padding-inline: 0.15rem;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+}
+
+@media (min-width: 768px) {
+  .menu-nav {
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow-x: visible;
+    padding-inline: 0;
+  }
 }
 
 .menu-nav-link {
@@ -101,6 +121,8 @@ body {
   border-radius: 9999px;
   border: 1px solid color-mix(in srgb, var(--color-charcoal) 8%, transparent);
   white-space: nowrap;
+  flex-shrink: 0;
+  scroll-snap-align: start;
   transition: color 0.2s, border-color 0.2s, background-color 0.2s;
 }
 
@@ -183,6 +205,27 @@ body {
   font-weight: 500;
   color: color-mix(in srgb, var(--color-charcoal) 40%, transparent);
   margin-right: 0.15rem;
+}
+
+@media (max-width: 639px) {
+  .menu-row-line {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+  }
+
+  .menu-row-leader {
+    display: none;
+  }
+
+  .menu-row-name {
+    max-width: 100%;
+    font-size: 1rem;
+  }
+
+  .menu-row-price {
+    align-self: flex-end;
+  }
 }
 
 .menu-row-desc {

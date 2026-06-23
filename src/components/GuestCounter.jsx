@@ -38,9 +38,9 @@ export default function GuestCounter({ label, value, min, max, onChange }) {
   }
 
   return (
-    <div className="flex items-center justify-between rounded-2xl border border-charcoal/10 bg-cream/30 px-4 py-3">
+    <div className="flex flex-col gap-3 rounded-2xl border border-charcoal/10 bg-cream/30 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
       <span className="text-sm font-medium text-charcoal">{label}</span>
-      <div className="flex items-center gap-3">
+      <div className="flex items-center justify-end gap-3">
         <button
           type="button"
           onClick={decrease}

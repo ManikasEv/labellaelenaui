@@ -1,6 +1,5 @@
 import { useState, useMemo, useEffect } from 'react'
 import { submitReservation } from '../api/reservations'
-import { sendReservationNotification } from '../api/notify'
 import { fetchPublicBlockedDates } from '../api/blockedDates'
 import { getAvailableDates, getTimeSlotsForDate } from '../data/openingHours'
 import ReservationCalendar from './ReservationCalendar'
@@ -123,13 +122,6 @@ export default function ReservationForm({ onSuccess }) {
       }
 
       const result = await submitReservation(payload)
-
-      try {
-        await sendReservationNotification(payload, result.reference)
-      } catch {
-        // Reservation saved; email failure must not block success screen
-      }
-
       onSuccess(result)
     } catch (err) {
       const messages = {
@@ -150,9 +142,9 @@ export default function ReservationForm({ onSuccess }) {
   }
 
   return (
-    <section className="bg-cream py-16 lg:py-24">
-      <div className="mx-auto max-w-4xl px-6 lg:px-8">
-        <form onSubmit={handleSubmit} className="space-y-10 rounded-3xl border border-charcoal/5 bg-white p-6 shadow-sm sm:p-8 lg:p-10">
+    <section className="bg-cream py-12 sm:py-16 lg:py-24">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <form onSubmit={handleSubmit} className="min-w-0 space-y-8 rounded-2xl border border-charcoal/5 bg-white p-4 shadow-sm sm:space-y-10 sm:rounded-3xl sm:p-8 lg:p-10">
           <FormSection title="Persönliche Angaben">
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
@@ -215,7 +207,7 @@ export default function ReservationForm({ onSuccess }) {
           </FormSection>
 
           <FormSection title="Termin wählen">
-            <div className="grid gap-6 lg:grid-cols-2 lg:items-start">
+            <div className="grid min-w-0 gap-6 lg:grid-cols-2 lg:items-start">
               <ReservationCalendar
                 value={form.date}
                 onChange={handleDateChange}

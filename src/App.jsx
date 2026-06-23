@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="w-full min-w-0 overflow-x-hidden">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/reservierung" element={<Reservation />} />

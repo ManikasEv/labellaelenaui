@@ -16,7 +16,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-charcoal text-cream/70">
-      <div className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
         <div className="grid gap-12 md:grid-cols-3">
           <div>
             <p className="font-display mb-4 text-2xl text-cream">La Bella Elena</p>
@@ -62,7 +62,7 @@ export default function Footer() {
               <li>
                 <a
                   href={`mailto:${restaurantEmail}`}
-                  className="transition-colors hover:text-gold"
+                  className="break-all transition-colors hover:text-gold"
                 >
                   {restaurantEmail}
                 </a>

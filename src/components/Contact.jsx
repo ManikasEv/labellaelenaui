@@ -12,8 +12,8 @@ import {
 
 export default function Contact() {
   return (
-    <section id="kontakt" className="bg-cream py-24 lg:py-16">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+    <section id="kontakt" className="overflow-x-hidden bg-cream py-16 sm:py-24 lg:py-16">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center lg:mb-8">
           <p className="mb-3 text-sm font-medium tracking-[0.2em] text-terracotta uppercase">
             Kontakt
@@ -61,7 +61,7 @@ export default function Contact() {
                   <dd>
                     <a
                       href={`mailto:${restaurantEmail}`}
-                      className="font-medium text-charcoal transition-colors hover:text-terracotta"
+                      className="break-all font-medium text-charcoal transition-colors hover:text-terracotta"
                     >
                       {restaurantEmail}
                     </a>
@@ -83,7 +83,7 @@ export default function Contact() {
                 {openingHours.map((entry) => (
                   <li
                     key={entry.label}
-                    className="flex items-baseline justify-between gap-3 text-sm"
+                    className="flex flex-col gap-1 text-sm sm:flex-row sm:items-baseline sm:justify-between sm:gap-3"
                   >
                     <span
                       className={`shrink-0 font-medium ${

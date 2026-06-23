@@ -66,8 +66,8 @@ export default function Gallery() {
   }
 
   return (
-    <section id="galerie" className="bg-white py-24 lg:py-32">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+    <section id="galerie" className="overflow-x-hidden bg-white py-16 sm:py-24 lg:py-32">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <p className="mb-3 text-sm font-medium tracking-[0.2em] text-terracotta uppercase">
             Galerie
@@ -111,8 +111,8 @@ export default function Gallery() {
                   draggable={false}
                   onAnimationEnd={index === active ? onZoomComplete : undefined}
                 />
-                <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-charcoal/90 via-charcoal/50 to-transparent px-6 pb-5 pt-16 sm:px-8 sm:pb-6 sm:pt-20">
-                  <p className="font-display max-w-xl text-lg leading-relaxed text-cream italic sm:text-xl">
+                <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-charcoal/90 via-charcoal/50 to-transparent px-4 pb-4 pt-12 sm:px-8 sm:pb-6 sm:pt-20">
+                  <p className="font-display max-w-xl text-base leading-relaxed text-cream italic sm:text-xl">
                     {image.quote}
                   </p>
                   <p className="mt-2 text-xs tracking-wide text-gold sm:text-sm">

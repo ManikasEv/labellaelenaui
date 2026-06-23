@@ -2,8 +2,8 @@ import aboutImage from '../assets/place5.jpg'
 
 export default function About() {
   return (
-    <section id="uber-uns" className="bg-cream py-24 lg:py-32">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+    <section id="uber-uns" className="overflow-x-hidden bg-cream py-16 sm:py-24 lg:py-32">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-16 lg:grid-cols-2">
           <div>
             <p className="mb-3 text-sm font-medium tracking-[0.2em] text-terracotta uppercase">
@@ -37,7 +37,7 @@ export default function About() {
             </div>
           </div>
 
-          <div className="relative">
+          <div className="relative overflow-hidden">
             <div className="aspect-[4/5] overflow-hidden rounded-3xl shadow-xl">
               <img
                 src={aboutImage}
@@ -45,7 +45,7 @@ export default function About() {
                 className="h-full w-full object-cover"
               />
             </div>
-            <div className="absolute -right-4 -bottom-4 -z-10 h-full w-full rounded-3xl bg-terracotta/10" />
+            <div className="absolute -right-2 -bottom-2 -z-10 hidden h-full w-full rounded-3xl bg-terracotta/10 sm:block sm:-right-4 sm:-bottom-4" />
           </div>
         </div>
       </div>

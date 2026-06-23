@@ -3,14 +3,14 @@ import { restaurantPhone, whatsappUrl } from '../data/location'
 
 export default function ReservationSuccess({ reference }) {
   return (
-    <section className="bg-cream py-16 lg:py-24">
-      <div className="mx-auto max-w-2xl px-6 text-center lg:px-8">
-        <div className="rounded-3xl border border-olive/20 bg-white p-10 shadow-sm lg:p-14">
+    <section className="bg-cream py-12 sm:py-16 lg:py-24">
+      <div className="mx-auto max-w-2xl px-4 text-center sm:px-6 lg:px-8">
+        <div className="rounded-2xl border border-olive/20 bg-white p-6 shadow-sm sm:rounded-3xl sm:p-10 lg:p-14">
           <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-olive/10 text-3xl">
             ✓
           </div>
 
-          <h2 className="font-display mb-4 text-3xl text-charcoal lg:text-4xl">
+          <h2 className="font-display mb-4 text-2xl text-charcoal sm:text-3xl lg:text-4xl">
             Ihre Reservierung wurde erfolgreich übermittelt
           </h2>
 
