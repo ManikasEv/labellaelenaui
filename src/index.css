@@ -209,9 +209,11 @@ body {
 
 @media (max-width: 639px) {
   .menu-row-line {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.2rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 0.75rem;
+    row-gap: 0.15rem;
+    align-items: start;
   }
 
   .menu-row-leader {
@@ -219,12 +221,19 @@ body {
   }
 
   .menu-row-name {
-    max-width: 100%;
+    max-width: none;
     font-size: 1rem;
   }
 
   .menu-row-price {
-    align-self: flex-end;
+    align-self: start;
+    padding-top: 0.05rem;
+    white-space: nowrap;
+  }
+
+  .menu-category-header {
+    text-align: left;
+    margin-bottom: 2rem;
   }
 }
 

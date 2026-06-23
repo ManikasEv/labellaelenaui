@@ -13,7 +13,7 @@ import {
 export default function Contact() {
   return (
     <section id="kontakt" className="overflow-x-hidden bg-cream py-16 sm:py-24 lg:py-16">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
         <div className="mb-12 text-center lg:mb-8">
           <p className="mb-3 text-sm font-medium tracking-[0.2em] text-terracotta uppercase">
             Kontakt
@@ -79,21 +79,21 @@ export default function Contact() {
 
             <div className="rounded-2xl border border-charcoal/5 bg-white p-6 shadow-sm lg:p-5">
               <h3 className="font-display mb-3 text-lg text-charcoal">Öffnungszeiten</h3>
-              <ul className="space-y-1.5">
+              <ul className="space-y-2.5">
                 {openingHours.map((entry) => (
                   <li
                     key={entry.label}
-                    className="flex flex-col gap-1 text-sm sm:flex-row sm:items-baseline sm:justify-between sm:gap-3"
+                    className="grid grid-cols-[3.25rem_minmax(0,1fr)] items-start gap-x-3 text-sm"
                   >
                     <span
-                      className={`shrink-0 font-medium ${
+                      className={`font-medium ${
                         entry.closed ? 'text-charcoal/45' : 'text-charcoal'
                       }`}
                     >
                       {entry.label}
                     </span>
                     <span
-                      className={`text-right tabular-nums leading-snug ${
+                      className={`text-right leading-snug ${
                         entry.closed ? 'italic text-charcoal/40' : 'text-charcoal/65'
                       }`}
                     >

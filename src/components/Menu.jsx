@@ -177,7 +177,7 @@ export default function Menu() {
 
   return (
     <section id="menu" className="overflow-x-hidden bg-white py-16 sm:py-24 lg:py-32">
-      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-3xl px-5 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <p className="mb-3 text-sm font-medium tracking-[0.2em] text-terracotta uppercase">
             Speisekarte
