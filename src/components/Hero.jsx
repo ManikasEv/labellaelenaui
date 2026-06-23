@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom'
 import heroImage from '../assets/place1.jpg'
-import bellalogo from '../assets/bellalogo.jpg'
-import { siteName } from '../data/site'
 import { restaurantPhone, whatsappUrl } from '../data/location'
+import { scrollToSection } from '../utils/scrollToSection'
 
 export default function Hero() {
   return (
@@ -22,15 +21,6 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6">
-        <img
-          src={bellalogo}
-          alt={`${siteName} — Ristorante & Pizzeria`}
-          width={112}
-          height={112}
-          className="mx-auto mb-5 h-20 w-20 rounded-full bg-cream/95 object-contain p-2 shadow-lg ring-1 ring-cream/40 sm:mb-6 sm:h-28 sm:w-28 sm:p-2.5"
-          fetchPriority="high"
-        />
-
         <p className="mb-4 text-xs font-medium tracking-[0.22em] text-cream/80 uppercase sm:text-sm sm:tracking-[0.3em]">
           Griechisch-Italienisches Restaurant
         </p>
@@ -65,6 +55,10 @@ export default function Hero() {
           </Link>
           <a
             href="#menu"
+            onClick={(event) => {
+              event.preventDefault()
+              scrollToSection('menu')
+            }}
             className="inline-flex items-center justify-center rounded-full border-2 border-cream/40 px-6 py-3.5 text-base font-medium text-cream transition-all hover:border-cream hover:bg-cream/10 sm:px-8"
           >
             Menü entdecken
@@ -77,7 +71,15 @@ export default function Hero() {
       </div>
 
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <a href="#uber-uns" aria-label="Weiter scrollen" className="text-cream/50 hover:text-cream">
+        <a
+          href="#uber-uns"
+          onClick={(event) => {
+            event.preventDefault()
+            scrollToSection('uber-uns')
+          }}
+          aria-label="Weiter scrollen"
+          className="text-cream/50 hover:text-cream"
+        >
           <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>

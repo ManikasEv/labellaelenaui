@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import bellalogo from '../assets/bellalogo.jpg'
-import { siteName } from '../data/site'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { showHeuteMenu } from '../data/dailyDishes'
+import { getSectionId, scrollToSection } from '../utils/scrollToSection'
 
 const navLinks = [
   { href: '/#uber-uns', label: 'Über uns' },
@@ -16,6 +15,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const location = useLocation()
+  const navigate = useNavigate()
   const isReservationPage = location.pathname === '/reservierung'
 
   useEffect(() => {
@@ -32,6 +32,30 @@ export default function Navbar() {
   const closeMenu = () => setMenuOpen(false)
   const solid = scrolled || menuOpen || isReservationPage
 
+  const handleSectionNav = (event, href) => {
+    event.preventDefault()
+    closeMenu()
+
+    const sectionId = getSectionId(href)
+    if (!sectionId) return
+
+    if (location.pathname !== '/') {
+      navigate('/', { state: { scrollTo: sectionId } })
+      return
+    }
+
+    scrollToSection(sectionId)
+  }
+
+  const sectionLinkClass = (isMobile) =>
+    isMobile
+      ? 'font-display text-2xl text-charcoal transition-colors hover:text-terracotta'
+      : `text-sm font-medium tracking-wide transition-colors ${
+          solid
+            ? 'text-charcoal/80 hover:text-terracotta'
+            : 'text-cream/90 hover:text-gold'
+        }`
+
   return (
     <header
       className={`fixed top-0 right-0 left-0 z-50 transition-all duration-300 ${
@@ -45,42 +69,25 @@ export default function Navbar() {
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5 sm:px-6 sm:py-4 lg:px-8">
         <Link
           to="/"
-          className={`flex min-w-0 items-center gap-2.5 transition-opacity hover:opacity-90 sm:gap-3 ${
-            solid ? '' : ''
+          className={`font-display max-w-[58%] truncate text-lg tracking-wide transition-colors sm:max-w-none sm:text-xl md:text-2xl ${
+            solid
+              ? 'text-charcoal hover:text-terracotta'
+              : 'text-cream hover:text-gold'
           }`}
         >
-          <img
-            src={bellalogo}
-            alt=""
-            width={40}
-            height={40}
-            className="h-9 w-9 shrink-0 rounded-full bg-cream object-contain p-0.5 ring-1 ring-charcoal/10 sm:h-10 sm:w-10"
-            aria-hidden="true"
-          />
-          <span
-            className={`font-display truncate text-lg tracking-wide transition-colors sm:text-xl md:text-2xl ${
-              solid
-                ? 'text-charcoal hover:text-terracotta'
-                : 'text-cream hover:text-gold'
-            }`}
-          >
-            {siteName}
-          </span>
+          La Bella Elena
         </Link>
 
         <ul className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <Link
-                to={link.href}
-                className={`text-sm font-medium tracking-wide transition-colors ${
-                  solid
-                    ? 'text-charcoal/80 hover:text-terracotta'
-                    : 'text-cream/90 hover:text-gold'
-                }`}
+              <a
+                href={link.href}
+                onClick={(event) => handleSectionNav(event, link.href)}
+                className={sectionLinkClass(false)}
               >
                 {link.label}
-              </Link>
+              </a>
             </li>
           ))}
         </ul>
@@ -124,20 +131,20 @@ export default function Navbar() {
       </nav>
 
       <div
-        className={`fixed inset-0 z-[55] flex flex-col items-center justify-center gap-8 bg-cream pt-16 md:hidden ${
+        className={`fixed inset-0 z-[60] flex flex-col items-center justify-center gap-8 bg-cream pt-16 md:hidden ${
           menuOpen ? 'visible' : 'invisible pointer-events-none'
         }`}
         aria-hidden={!menuOpen}
       >
         {navLinks.map((link) => (
-          <Link
+          <a
             key={link.href}
-            to={link.href}
-            onClick={closeMenu}
-            className="font-display text-2xl text-charcoal transition-colors hover:text-terracotta"
+            href={link.href}
+            onClick={(event) => handleSectionNav(event, link.href)}
+            className={sectionLinkClass(true)}
           >
             {link.label}
-          </Link>
+          </a>
         ))}
         <Link
           to="/reservierung"
