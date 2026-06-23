@@ -1,6 +1,7 @@
 import { useState, useMemo, useEffect } from 'react'
 import { submitReservation } from '../api/reservations'
 import { fetchPublicBlockedDates } from '../api/blockedDates'
+import { getActiveBlockedDateNotices } from '../data/blockedDateNotices'
 import { getAvailableDates, getTimeSlotsForDate } from '../data/openingHours'
 import ReservationCalendar from './ReservationCalendar'
 import ReservationTimePicker from './ReservationTimePicker'
@@ -67,6 +68,7 @@ export default function ReservationForm({ onSuccess }) {
   )
 
   const totalGuests = form.adults + form.kids
+  const blockedDateNotices = getActiveBlockedDateNotices()
 
   const update = (field) => (e) => {
     setForm((prev) => ({ ...prev, [field]: e.target.value }))
@@ -207,6 +209,16 @@ export default function ReservationForm({ onSuccess }) {
           </FormSection>
 
           <FormSection title="Termin wählen">
+            {blockedDateNotices.length > 0 && (
+              <div
+                className="rounded-xl border border-terracotta/25 bg-terracotta/10 px-4 py-3 text-sm leading-relaxed text-charcoal"
+                role="status"
+              >
+                {blockedDateNotices.map((notice) => (
+                  <p key={notice.date}>{notice.message}</p>
+                ))}
+              </div>
+            )}
             <div className="grid min-w-0 gap-6 lg:grid-cols-2 lg:items-start">
               <ReservationCalendar
                 value={form.date}

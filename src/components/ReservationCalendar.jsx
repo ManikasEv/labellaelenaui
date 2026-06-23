@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { getBlockedDateNotice } from '../data/blockedDateNotices'
 import {
   toLocalDateStr,
   isClosedOnDate,
@@ -138,8 +139,11 @@ export default function ReservationCalendar({ value, onChange, blockedDates = []
           const today = dateStr === toLocalDateStr(new Date())
           const clickable = state === 'available'
 
+          const blockedNotice = getBlockedDateNotice(dateStr)
           const ariaLabel = state === 'closed'
-            ? `${dateStr}, geschlossen`
+            ? blockedNotice || (blockedDates.includes(dateStr)
+              ? `${dateStr}, keine Reservierungen möglich`
+              : `${dateStr}, geschlossen`)
             : state === 'past'
               ? `${dateStr}, vergangen`
               : dateStr
@@ -155,9 +159,10 @@ export default function ReservationCalendar({ value, onChange, blockedDates = []
               aria-selected={selected}
               title={
                 state === 'closed'
-                  ? blockedDates.includes(dateStr)
-                    ? 'Keine Reservierungen möglich'
-                    : 'Ruhetag — Restaurant geschlossen'
+                  ? getBlockedDateNotice(dateStr) ||
+                    (blockedDates.includes(dateStr)
+                      ? 'Keine Reservierungen möglich'
+                      : 'Ruhetag — Restaurant geschlossen')
                   : undefined
               }
               className={[
