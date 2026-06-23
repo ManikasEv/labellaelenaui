@@ -3,6 +3,7 @@ import { openingHoursCompact as openingHours } from '../data/openingHours'
 import {
   restaurantLocation,
   restaurantPhone,
+  restaurantEmail,
   whatsappUrl,
   mapsEmbedUrl,
   mapsSearchUrl,
@@ -50,6 +51,19 @@ export default function Contact() {
                       className="font-medium text-charcoal transition-colors hover:text-terracotta"
                     >
                       {restaurantPhone}
+                    </a>
+                  </dd>
+                </div>
+                <div>
+                  <dt className="mb-1 text-xs font-medium tracking-wide text-charcoal/45 uppercase">
+                    E-Mail
+                  </dt>
+                  <dd>
+                    <a
+                      href={`mailto:${restaurantEmail}`}
+                      className="font-medium text-charcoal transition-colors hover:text-terracotta"
+                    >
+                      {restaurantEmail}
                     </a>
                   </dd>
                 </div>

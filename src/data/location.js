@@ -10,6 +10,8 @@ export const restaurantLocation = {
 
 export const restaurantPhone = '+41 41 850 13 13'
 
+export const restaurantEmail = 'labellaelena.hohlegasse@gmail.com'
+
 export const whatsappUrl = 'https://wa.me/41418501313'
 
 const query = encodeURIComponent(

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { showHeuteMenu } from '../data/dailyDishes'
-import { restaurantPhone, whatsappUrl } from '../data/location'
+import { restaurantPhone, restaurantEmail, whatsappUrl } from '../data/location'
 
 const footerLinks = [
   { href: '/#uber-uns', label: 'Über uns' },
@@ -61,10 +61,10 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:info@labellaelena-hohlegasse.ch"
+                  href={`mailto:${restaurantEmail}`}
                   className="transition-colors hover:text-gold"
                 >
-                  info@labellaelena-hohlegasse.ch
+                  {restaurantEmail}
                 </a>
               </li>
             </ul>
