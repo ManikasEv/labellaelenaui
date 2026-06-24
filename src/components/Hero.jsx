@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import heroImage from '../assets/place1.jpg'
+import heroImage from '../assets/imageforgoogleandhero.jpg'
 import { restaurantPhone, whatsappUrl } from '../data/location'
 import { scrollToSection } from '../utils/scrollToSection'
 
@@ -9,15 +9,13 @@ export default function Hero() {
       <div className="absolute inset-0">
         <img
           src={heroImage}
-          alt=""
-          className="h-full w-full scale-105 object-cover object-[center_35%] blur-[2px]"
+          alt="La Bella Elena — Restaurant an der Hohlen Gasse in Immensee mit Blick auf die Berge"
+          className="h-full w-full scale-105 object-cover object-center"
           fetchPriority="high"
-          aria-hidden="true"
         />
-        <div className="absolute inset-0 bg-charcoal/40" />
-        <div className="absolute inset-0 bg-gradient-to-b from-olive-dark/85 via-olive/55 to-olive-dark/80" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(22,45,56,0.45),transparent_68%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(141,212,232,0.18),transparent_55%)]" />
+        <div className="absolute inset-0 bg-charcoal/35" />
+        <div className="absolute inset-0 bg-gradient-to-b from-olive-dark/80 via-olive/50 to-olive-dark/85" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(22,45,56,0.35),transparent_70%)]" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6">

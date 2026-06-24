@@ -49,13 +49,13 @@ export function getRestaurantSchemaGraph() {
             '@type': 'ImageObject',
             url: `${siteUrl}/images/search-preview.jpg`,
             width: 1200,
-            height: 630,
+            height: 901,
           },
           {
             '@type': 'ImageObject',
             url: `${siteUrl}/images/restaurant.jpg`,
-            width: 1290,
-            height: 1720,
+            width: 1200,
+            height: 901,
           },
         ],
         logo: {
