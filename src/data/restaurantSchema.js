@@ -49,8 +49,8 @@ export function getRestaurantSchemaGraph() {
           {
             '@type': 'ImageObject',
             url: `${siteUrl}/restaurant-cover.jpg`,
-            width: 1200,
-            height: 630,
+            width: 2400,
+            height: 1260,
             caption: 'La Bella Elena — Restaurant an der Hohlen Gasse in Immensee',
           },
           {

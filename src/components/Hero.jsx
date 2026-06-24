@@ -8,8 +8,8 @@ export default function Hero() {
       <img
         src="/restaurant-cover.jpg"
         alt="La Bella Elena — Restaurant an der Hohlen Gasse in Immensee mit Blick auf die Berge"
-        width={1200}
-        height={630}
+        width={2400}
+        height={1260}
         className="absolute inset-0 size-full object-cover object-center"
         fetchPriority="high"
         decoding="async"
