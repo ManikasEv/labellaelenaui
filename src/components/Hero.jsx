@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import heroImage from '../assets/hero.jpg'
 import { restaurantPhone, whatsappUrl } from '../data/location'
 import { scrollToSection } from '../utils/scrollToSection'
 
@@ -7,8 +6,10 @@ export default function Hero() {
   return (
     <section className="relative flex min-h-[100dvh] w-full items-center justify-center overflow-hidden">
       <img
-        src={heroImage}
+        src="/restaurant-cover.jpg"
         alt="La Bella Elena — Restaurant an der Hohlen Gasse in Immensee mit Blick auf die Berge"
+        width={1200}
+        height={630}
         className="absolute inset-0 size-full object-cover object-center"
         fetchPriority="high"
         decoding="async"
