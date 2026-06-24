@@ -17,6 +17,7 @@ export function getRestaurantSchemaGraph() {
         '@id': `${siteUrl}/#website`,
         url: `${siteUrl}/`,
         name: 'La Bella Elena',
+        alternateName: ['labellaelena', 'labellaelena.ch', 'La Bella Elena Immensee'],
         description:
           'Griechisch-Italienisches Restaurant an der Hohlen Gasse, Artherstrasse 38, 6405 Immensee.',
         publisher: { '@id': `${siteUrl}/#restaurant` },
@@ -27,6 +28,8 @@ export function getRestaurantSchemaGraph() {
         '@id': `${siteUrl}/#restaurant`,
         name: 'La Bella Elena',
         alternateName: [
+          'labellaelena',
+          'labellaelena.ch',
           'La Bella Elena Hohle Gasse',
           'Restaurant Hohle Gasse Immensee',
           'Restaurant Hohle Gasse Küssnacht',
@@ -37,6 +40,10 @@ export function getRestaurantSchemaGraph() {
         url: `${siteUrl}/`,
         telephone: restaurantPhoneTel,
         email: restaurantEmail,
+        sameAs: [
+          'https://www.instagram.com/labellaelena.hohlegasse/',
+          mapsSearchUrl,
+        ],
         image: [
           {
             '@type': 'ImageObject',

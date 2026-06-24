@@ -2,7 +2,6 @@ import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import SeoHead from './components/SeoHead'
-import LocalBusinessSchema from './components/LocalBusinessSchema'
 import Home from './pages/Home'
 import Reservation from './pages/Reservation'
 import Standort from './pages/Standort'
@@ -10,7 +9,6 @@ import Standort from './pages/Standort'
 function App() {
   return (
     <>
-      <LocalBusinessSchema />
       <SeoHead />
       <Navbar />
       <main className="w-full min-w-0 overflow-x-hidden">
