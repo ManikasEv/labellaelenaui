@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import heroImage from '../assets/imageforgoogleandhero.jpg'
+import heroImage from '../assets/hero.jpg'
 import { restaurantPhone, whatsappUrl } from '../data/location'
 import { scrollToSection } from '../utils/scrollToSection'
 

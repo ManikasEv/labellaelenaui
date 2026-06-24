@@ -22,7 +22,7 @@ export const restaurantImageAlt =
   'La Bella Elena — Restaurant an der Hohlen Gasse in Immensee mit Blick auf die Berge'
 
 export const ogImageWidth = 1200
-export const ogImageHeight = 901
+export const ogImageHeight = 630
 
 export const logoUrl = `${siteUrl}/images/logo.png`
 export const faviconUrl = `${siteUrl}/favicon-192.png`

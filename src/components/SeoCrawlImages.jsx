@@ -4,8 +4,8 @@ import { restaurantImageAlt } from '../data/site'
 export default function SeoCrawlImages() {
   return (
     <div className="pointer-events-none absolute h-px w-px overflow-hidden opacity-0" aria-hidden="true">
-      <img src="/images/search-preview.jpg" alt={restaurantImageAlt} width={1200} height={901} />
-      <img src="/images/restaurant.jpg" alt={restaurantImageAlt} width={1200} height={901} />
+      <img src="/images/search-preview.jpg" alt={restaurantImageAlt} width={1200} height={630} />
+      <img src="/images/restaurant.jpg" alt={restaurantImageAlt} width={1200} height={630} />
       <img src="/favicon-192.png" alt="La Bella Elena Logo" width={192} height={192} />
     </div>
   )
