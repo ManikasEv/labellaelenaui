@@ -16,6 +16,7 @@ export const siteDescription =
 export const siteKeywords =
   'labellaelena, labellaelena.ch, La Bella Elena, Restaurant Hohle Gasse, Restaurant Immensee, Restaurant Küssnacht, Artherstrasse 38'
 
+export const restaurantCoverImageUrl = `${siteUrl}/restaurant-cover.jpg`
 export const restaurantImageUrl = `${siteUrl}/images/restaurant.jpg`
 export const searchPreviewImageUrl = `${siteUrl}/images/search-preview.jpg`
 export const restaurantImageAlt =
@@ -26,5 +27,5 @@ export const ogImageHeight = 630
 
 export const logoUrl = `${siteUrl}/images/logo.png`
 export const faviconUrl = `${siteUrl}/favicon-192.png`
-export const ogImage = searchPreviewImageUrl
+export const ogImage = restaurantCoverImageUrl
 export const ogImageAlt = restaurantImageAlt
