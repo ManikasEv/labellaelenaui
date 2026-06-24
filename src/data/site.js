@@ -1,5 +1,13 @@
 export const siteUrl = 'https://www.labellaelena.ch'
 
+/** Previous domains that should 301 to siteUrl (see public/_redirects). */
+export const legacyDomains = [
+  'labelaelena.ch',
+  'www.labelaelena.ch',
+  'labellaelena-hohlegasse.ch',
+  'www.labellaelena-hohlegasse.ch',
+]
+
 export const siteName = 'La Bella Elena'
 
 export const siteTitle =

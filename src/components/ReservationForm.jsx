@@ -1,5 +1,6 @@
 import { useState, useMemo, useEffect } from 'react'
 import { submitReservation } from '../api/reservations'
+import { notifyRestaurantViaWeb3Forms } from '../api/notifyRestaurant'
 import { fetchPublicBlockedDates } from '../api/blockedDates'
 import { getActiveBlockedDateNotices } from '../data/blockedDateNotices'
 import { getAvailableDates, getTimeSlotsForDate } from '../data/openingHours'
@@ -124,6 +125,11 @@ export default function ReservationForm({ onSuccess }) {
       }
 
       const result = await submitReservation(payload)
+
+      if (!result.emailsSent?.restaurant) {
+        await notifyRestaurantViaWeb3Forms(payload, result.reference)
+      }
+
       onSuccess(result)
     } catch (err) {
       const messages = {

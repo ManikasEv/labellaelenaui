@@ -1,0 +1,16 @@
+# Canonical host: apex → www
+http://labellaelena.ch/*           https://www.labellaelena.ch/:splat    301!
+https://labellaelena.ch/*          https://www.labellaelena.ch/:splat    301!
+
+# Old domains → canonical (typo + previous domain)
+http://labelaelena.ch/*            https://www.labellaelena.ch/:splat    301!
+https://labelaelena.ch/*           https://www.labellaelena.ch/:splat    301!
+http://www.labelaelena.ch/*        https://www.labellaelena.ch/:splat    301!
+https://www.labelaelena.ch/*       https://www.labellaelena.ch/:splat    301!
+http://labellaelena-hohlegasse.ch/*     https://www.labellaelena.ch/:splat    301!
+https://labellaelena-hohlegasse.ch/*    https://www.labellaelena.ch/:splat    301!
+http://www.labellaelena-hohlegasse.ch/* https://www.labellaelena.ch/:splat    301!
+https://www.labellaelena-hohlegasse.ch/* https://www.labellaelena.ch/:splat   301!
+
+# React Router — client-side routes
+/*    /index.html    200
