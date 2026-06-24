@@ -27,6 +27,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.mobile-nav-root,
+.mobile-nav-panel {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
 .font-display {
   font-family: var(--font-display);
 }
