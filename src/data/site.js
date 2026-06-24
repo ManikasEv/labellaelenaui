@@ -23,3 +23,8 @@ export const restaurantImageAlt =
 
 export const ogImageWidth = 1200
 export const ogImageHeight = 901
+
+export const logoUrl = `${siteUrl}/images/logo.png`
+export const faviconUrl = `${siteUrl}/favicon-192.png`
+export const ogImage = searchPreviewImageUrl
+export const ogImageAlt = restaurantImageAlt
