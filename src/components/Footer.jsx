@@ -9,6 +9,7 @@ const footerLinks = [
   { href: '/#menu', label: 'Menü' },
   ...(showHeuteMenu ? [{ href: '/#menu-heute', label: 'Heute' }] : []),
   { href: '/#kontakt', label: 'Kontakt' },
+  { href: '/standort', label: 'Standort' },
   { href: '/reservierung', label: 'Reservierung' },
 ]
 
@@ -38,7 +39,8 @@ export default function Footer() {
           <div>
             <p className="font-display mb-4 text-2xl text-cream">La Bella Elena</p>
             <p className="text-sm leading-relaxed">
-              Griechisch-Italienisches Restaurant an der Hohlen Gasse in Immensee.
+              Griechisch-Italienisches Restaurant an der Hohlen Gasse, Artherstrasse 38, 6405
+              Immensee.
             </p>
           </div>
 

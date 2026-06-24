@@ -17,6 +17,7 @@ export default function Navbar() {
   const location = useLocation()
   const navigate = useNavigate()
   const isReservationPage = location.pathname === '/reservierung'
+  const isSubPage = isReservationPage || location.pathname === '/standort'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -30,7 +31,7 @@ export default function Navbar() {
   }, [menuOpen])
 
   const closeMenu = () => setMenuOpen(false)
-  const solid = scrolled || menuOpen || isReservationPage
+  const solid = scrolled || menuOpen || isSubPage
 
   const handleSectionNav = (event, href) => {
     event.preventDefault()

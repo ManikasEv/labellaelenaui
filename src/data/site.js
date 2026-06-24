@@ -9,13 +9,13 @@ export const legacyDomains = [
 export const siteName = 'La Bella Elena'
 
 export const siteTitle =
-  'La Bella Elena — Griechisch-Italienisches Restaurant an der Hohlen Gasse, Immensee'
+  'La Bella Elena — Restaurant Hohle Gasse, Artherstrasse 38, Immensee'
 
 export const siteDescription =
-  'La Bella Elena — Griechisch-Italienisches Restaurant an der Hohlen Gasse in Immensee. Artherstrasse 38, 6405 Immensee. Tel. +41 41 850 13 13.'
+  'La Bella Elena — Griechisch-Italienisches Restaurant an der Hohlen Gasse, Artherstrasse 38, 6405 Immensee (nahe Küssnacht). Tel. +41 41 850 13 13.'
 
 export const siteKeywords =
-  'La Bella Elena, Restaurant Immensee, Griechisch-Italienisch, Hohle Gasse, Reservierung, Pizzeria, Ristorante'
+  'La Bella Elena, Restaurant Hohle Gasse, Restaurant Immensee, Restaurant Küssnacht, Artherstrasse 38, Griechisch-Italienisch, Reservierung'
 
 export const restaurantImageUrl = `${siteUrl}/images/restaurant.jpg`
 export const searchPreviewImageUrl = `${siteUrl}/images/search-preview.jpg`

@@ -21,6 +21,12 @@ export default function About() {
               die Pasta-Expertise und die «Dolce Vita»-Power mit. Wir kochen so, wie wir leben:
               laut, herzlich und mit verdammt viel Liebe zum Detail.
             </p>
+            <p className="mb-8 leading-relaxed text-charcoal/70">
+              Unser Restaurant liegt an der <strong>Hohlen Gasse</strong> in{' '}
+              <strong>Immensee</strong> — Artherstrasse 38, nahe Küssnacht am Rigi. Ob Terrasse,
+              Familienfeier oder spontanes Mittagessen: bei uns finden Sie mediterrane Küche mit
+              Herz.
+            </p>
 
             <div className="flex flex-wrap gap-4">
               {['Elena', 'Angelos', 'Alessio'].map((name) => (

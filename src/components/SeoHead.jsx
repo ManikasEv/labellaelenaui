@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { siteUrl, siteDescription, siteTitle } from '../data/site'
+import { standortMeta } from '../data/restaurantSchema'
 
 const pageMeta = {
   '/': {
@@ -8,10 +9,11 @@ const pageMeta = {
     description: siteDescription,
   },
   '/reservierung': {
-    title: 'Tisch reservieren — La Bella Elena',
+    title: 'Tisch reservieren — La Bella Elena, Hohle Gasse Immensee',
     description:
-      'Reservieren Sie Ihren Tisch bei La Bella Elena in Immensee. Griechisch-italienisches Restaurant an der Hohlen Gasse.',
+      'Reservieren Sie Ihren Tisch bei La Bella Elena an der Hohlen Gasse, Artherstrasse 38, 6405 Immensee.',
   },
+  '/standort': standortMeta,
 }
 
 function getCanonicalUrl(pathname) {
