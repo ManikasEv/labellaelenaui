@@ -5,33 +5,33 @@ import { scrollToSection } from '../utils/scrollToSection'
 
 export default function Hero() {
   return (
-    <section className="flex h-[100dvh] w-full min-h-0 flex-col">
-      {/* 70% — full-width image canvas, aspect ratio preserved (resizeMode: contain) */}
-      <div className="relative h-[70%] min-h-0 w-full shrink-0 bg-olive-dark">
-        <img
-          src={heroImage}
-          alt="La Bella Elena — Restaurant an der Hohlen Gasse in Immensee mit Blick auf die Berge"
-          className="size-full object-contain object-center"
-          fetchPriority="high"
-          decoding="async"
-        />
-      </div>
+    <section className="relative flex min-h-[100dvh] w-full items-center justify-center overflow-hidden">
+      <img
+        src={heroImage}
+        alt="La Bella Elena — Restaurant an der Hohlen Gasse in Immensee mit Blick auf die Berge"
+        className="absolute inset-0 size-full object-cover object-center"
+        fetchPriority="high"
+        decoding="async"
+      />
+      <div className="absolute inset-0 bg-charcoal/30" />
+      <div className="absolute inset-0 bg-gradient-to-b from-olive-dark/70 via-olive/40 to-olive-dark/80" />
 
-      {/* 30% — text and actions (separate from image, no overlay crop) */}
-      <div className="relative flex h-[30%] min-h-0 shrink-0 flex-col items-center justify-center overflow-y-auto bg-gradient-to-b from-olive-dark to-charcoal px-4 py-3 text-center sm:px-6">
-        <p className="mb-1 text-[10px] font-medium tracking-[0.2em] text-cream/75 uppercase sm:mb-2 sm:text-xs sm:tracking-[0.28em]">
+      <div className="relative z-10 mx-auto max-w-4xl px-4 py-24 text-center sm:px-6">
+        <p className="mb-4 text-xs font-medium tracking-[0.22em] text-cream/80 uppercase sm:text-sm sm:tracking-[0.3em]">
           Griechisch-Italienisches Restaurant
         </p>
 
-        <h1 className="font-display mb-1 text-2xl leading-tight text-cream sm:mb-2 sm:text-4xl lg:text-5xl">
+        <h1 className="font-display mb-6 text-4xl leading-tight text-cream sm:text-6xl lg:text-7xl">
           La Bella Elena
         </h1>
 
-        <p className="mx-auto mb-1 max-w-xl text-xs leading-snug text-cream/85 sm:mb-2 sm:text-sm sm:leading-relaxed lg:text-base">
-          Hohle Gasse · Artherstrasse 38, 6405 Immensee
+        <p className="mx-auto mb-2 max-w-xl text-base leading-relaxed text-cream/90 sm:text-lg sm:text-xl">
+          Hohle Gasse<br className="sm:hidden" />
+          <span className="hidden sm:inline"> · </span>
+          Artherstrasse 38, 6405 Immensee
         </p>
 
-        <p className="mb-2 text-xs text-cream/65 sm:mb-3 sm:text-sm">
+        <p className="mb-8 text-sm leading-relaxed text-cream/70 sm:mb-10 sm:text-base">
           <a
             href={whatsappUrl}
             target="_blank"
@@ -42,10 +42,10 @@ export default function Hero() {
           </a>
         </p>
 
-        <div className="flex w-full max-w-md flex-col items-stretch justify-center gap-2 sm:max-w-none sm:flex-row sm:items-center sm:gap-3">
+        <div className="flex w-full max-w-md flex-col items-stretch justify-center gap-3 sm:mx-auto sm:max-w-none sm:flex-row sm:items-center sm:gap-4">
           <Link
             to="/reservierung"
-            className="inline-flex items-center justify-center rounded-full bg-terracotta px-5 py-2.5 text-sm font-medium text-cream shadow-lg transition-all hover:bg-terracotta-dark hover:shadow-xl sm:px-7 sm:py-3 sm:text-base"
+            className="inline-flex items-center justify-center rounded-full bg-terracotta px-6 py-3.5 text-base font-medium text-cream shadow-lg transition-all hover:bg-terracotta-dark hover:shadow-xl sm:px-8"
           >
             Tisch reservieren
           </Link>
@@ -55,30 +55,30 @@ export default function Hero() {
               event.preventDefault()
               scrollToSection('menu')
             }}
-            className="inline-flex items-center justify-center rounded-full border-2 border-cream/40 px-5 py-2.5 text-sm font-medium text-cream transition-all hover:border-cream hover:bg-cream/10 sm:px-7 sm:py-3 sm:text-base"
+            className="inline-flex items-center justify-center rounded-full border-2 border-cream/40 px-6 py-3.5 text-base font-medium text-cream transition-all hover:border-cream hover:bg-cream/10 sm:px-8"
           >
             Menü entdecken
           </a>
         </div>
 
-        <p className="mt-2 hidden max-w-lg text-xs italic leading-relaxed text-cream/55 sm:mt-3 sm:block sm:text-sm">
+        <p className="mt-10 px-2 text-sm italic leading-relaxed text-cream/60 sm:mt-16">
           «Una faccia, una razza — ob Griechenland oder Italien, am Ende zählt nur: dass es schmeckt wie bei Mamma.»
         </p>
-
-        <a
-          href="#uber-uns"
-          onClick={(event) => {
-            event.preventDefault()
-            scrollToSection('uber-uns')
-          }}
-          aria-label="Weiter scrollen"
-          className="absolute right-4 bottom-2 text-cream/40 transition-colors hover:text-cream sm:bottom-3"
-        >
-          <svg className="h-5 w-5 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </a>
       </div>
+
+      <a
+        href="#uber-uns"
+        onClick={(event) => {
+          event.preventDefault()
+          scrollToSection('uber-uns')
+        }}
+        aria-label="Weiter scrollen"
+        className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 animate-bounce text-cream/50 hover:text-cream"
+      >
+        <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </a>
     </section>
   )
 }
