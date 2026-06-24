@@ -7,16 +7,26 @@ import Menu from '../components/Menu'
 import Contact from '../components/Contact'
 import SeoCrawlImages from '../components/SeoCrawlImages'
 import ScrollReveal from '../components/ScrollReveal'
+import { homeSectionLinks } from '../data/siteNavigation'
 import { scrollToSection } from '../utils/scrollToSection'
+
+const sectionIdByPath = Object.fromEntries(
+  homeSectionLinks.map((link) => [link.path, link.sectionId]),
+)
 
 export default function Home() {
   const location = useLocation()
 
   useEffect(() => {
     const sectionId =
-      location.state?.scrollTo || window.location.hash.replace(/^#/, '')
+      sectionIdByPath[location.pathname] ||
+      location.state?.scrollTo ||
+      window.location.hash.replace(/^#/, '')
 
-    if (!sectionId) return
+    if (!sectionId) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+      return
+    }
 
     let attempts = 0
     let frameId = 0

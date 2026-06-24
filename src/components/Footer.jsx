@@ -1,36 +1,9 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { showHeuteMenu } from '../data/dailyDishes'
+import { Link } from 'react-router-dom'
+import { allSiteNavLinks } from '../data/siteNavigation'
 import { restaurantPhone, restaurantEmail, whatsappUrl } from '../data/location'
-import { getSectionId, scrollToSection } from '../utils/scrollToSection'
-
-const footerLinks = [
-  { href: '/#uber-uns', label: 'Über uns' },
-  { href: '/#galerie', label: 'Galerie' },
-  { href: '/#menu', label: 'Menü' },
-  ...(showHeuteMenu ? [{ href: '/#menu-heute', label: 'Heute' }] : []),
-  { href: '/#kontakt', label: 'Kontakt' },
-  { href: '/standort', label: 'Standort' },
-  { href: '/reservierung', label: 'Reservierung' },
-]
 
 export default function Footer() {
   const year = new Date().getFullYear()
-  const location = useLocation()
-  const navigate = useNavigate()
-
-  const handleFooterNav = (event, href) => {
-    const sectionId = getSectionId(href)
-    if (!sectionId) return
-
-    event.preventDefault()
-
-    if (location.pathname !== '/') {
-      navigate('/', { state: { scrollTo: sectionId } })
-      return
-    }
-
-    scrollToSection(sectionId)
-  }
 
   return (
     <footer className="bg-charcoal text-cream/70">
@@ -49,34 +22,16 @@ export default function Footer() {
               Navigation
             </p>
             <ul className="space-y-2">
-              {footerLinks.map((link) => {
-                const sectionId = getSectionId(link.href)
-
-                if (sectionId) {
-                  return (
-                    <li key={link.href}>
-                      <a
-                        href={link.href}
-                        onClick={(event) => handleFooterNav(event, link.href)}
-                        className="text-sm transition-colors hover:text-gold"
-                      >
-                        {link.label}
-                      </a>
-                    </li>
-                  )
-                }
-
-                return (
-                  <li key={link.href}>
-                    <Link
-                      to={link.href}
-                      className="text-sm transition-colors hover:text-gold"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                )
-              })}
+              {allSiteNavLinks.map((link) => (
+                <li key={link.path}>
+                  <Link
+                    to={link.path}
+                    className="text-sm transition-colors hover:text-gold"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 

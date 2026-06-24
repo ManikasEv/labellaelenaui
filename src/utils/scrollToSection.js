@@ -1,3 +1,5 @@
+import { sectionPaths } from '../data/siteNavigation'
+
 const HEADER_OFFSET = 88
 
 export function getSectionId(href) {
@@ -13,6 +15,10 @@ export function scrollToSection(sectionId) {
     element.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET
 
   window.scrollTo({ top, behavior: 'smooth' })
-  window.history.replaceState(null, '', `/#${sectionId}`)
+
+  if (window.location.pathname === '/' && !sectionPaths.has(window.location.pathname)) {
+    window.history.replaceState(null, '', `/#${sectionId}`)
+  }
+
   return true
 }

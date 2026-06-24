@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { restaurantPhone, whatsappUrl } from '../data/location'
-import { scrollToSection } from '../utils/scrollToSection'
 
 export default function Hero() {
   return (
@@ -50,16 +49,12 @@ export default function Hero() {
           >
             Tisch reservieren
           </Link>
-          <a
-            href="#menu"
-            onClick={(event) => {
-              event.preventDefault()
-              scrollToSection('menu')
-            }}
+          <Link
+            to="/menu"
             className="inline-flex items-center justify-center rounded-full border-2 border-cream/40 px-6 py-3.5 text-base font-medium text-cream transition-all hover:border-cream hover:bg-cream/10 sm:px-8"
           >
             Menü entdecken
-          </a>
+          </Link>
         </div>
 
         <p className="mt-10 px-2 text-sm italic leading-relaxed text-cream/60 sm:mt-16">
@@ -67,19 +62,15 @@ export default function Hero() {
         </p>
       </div>
 
-      <a
-        href="#uber-uns"
-        onClick={(event) => {
-          event.preventDefault()
-          scrollToSection('uber-uns')
-        }}
+      <Link
+        to="/uber-uns"
         aria-label="Weiter scrollen"
         className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 animate-bounce text-cream/50 hover:text-cream"
       >
         <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
-      </a>
+      </Link>
     </section>
   )
 }

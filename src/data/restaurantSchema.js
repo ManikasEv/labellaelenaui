@@ -7,6 +7,7 @@ import {
   restaurantLocation,
   restaurantPhoneTel,
 } from './location'
+import { getSiteNavigationSchema, sectionMeta } from './siteNavigation'
 
 export function getRestaurantSchemaGraph() {
   return {
@@ -21,6 +22,39 @@ export function getRestaurantSchemaGraph() {
         description:
           'Griechisch-Italienisches Restaurant an der Hohlen Gasse, Artherstrasse 38, 6405 Immensee.',
         publisher: { '@id': `${siteUrl}/#restaurant` },
+        inLanguage: 'de-CH',
+      },
+      getSiteNavigationSchema(),
+      {
+        '@type': 'WebPage',
+        '@id': `${siteUrl}/`,
+        url: `${siteUrl}/`,
+        name: 'La Bella Elena — Restaurant Hohle Gasse Immensee',
+        description:
+          'Griechisch-Italienisches Restaurant an der Hohlen Gasse, Artherstrasse 38, 6405 Immensee.',
+        isPartOf: { '@id': `${siteUrl}/#website` },
+        about: { '@id': `${siteUrl}/#restaurant` },
+        inLanguage: 'de-CH',
+      },
+      ...Object.entries(sectionMeta).map(([path, meta]) => ({
+        '@type': 'WebPage',
+        '@id': `${siteUrl}${path}`,
+        url: `${siteUrl}${path}`,
+        name: meta.title,
+        description: meta.description,
+        isPartOf: { '@id': `${siteUrl}/#website` },
+        about: { '@id': `${siteUrl}/#restaurant` },
+        inLanguage: 'de-CH',
+      })),
+      {
+        '@type': 'WebPage',
+        '@id': `${siteUrl}/reservierung`,
+        url: `${siteUrl}/reservierung`,
+        name: 'Tisch reservieren — La Bella Elena, Hohle Gasse Immensee',
+        description:
+          'Reservieren Sie Ihren Tisch bei La Bella Elena an der Hohlen Gasse, Artherstrasse 38, 6405 Immensee.',
+        isPartOf: { '@id': `${siteUrl}/#website` },
+        about: { '@id': `${siteUrl}/#restaurant` },
         inLanguage: 'de-CH',
       },
       {
@@ -86,7 +120,7 @@ export function getRestaurantSchemaGraph() {
           longitude: restaurantLocation.lng,
         },
         hasMap: mapsSearchUrl,
-        menu: `${siteUrl}/#menu`,
+        menu: `${siteUrl}/menu`,
         acceptsReservations: true,
         servesCuisine: ['Greek', 'Italian', 'Mediterranean'],
         priceRange: '$$',

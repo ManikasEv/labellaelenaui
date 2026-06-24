@@ -1,16 +1,12 @@
 import { useState, useEffect } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
-import { showHeuteMenu } from '../data/dailyDishes'
-import { getSectionId, scrollToSection } from '../utils/scrollToSection'
+import { homeSectionLinks, sectionPaths } from '../data/siteNavigation'
 
-const navLinks = [
-  { href: '/#uber-uns', label: 'Über uns' },
-  { href: '/#galerie', label: 'Galerie' },
-  { href: '/#menu', label: 'Menü' },
-  ...(showHeuteMenu ? [{ href: '/#menu-heute', label: 'Heute' }] : []),
-  { href: '/#kontakt', label: 'Kontakt' },
-]
+const navLinks = homeSectionLinks.map((link) => ({
+  to: link.path,
+  label: link.label,
+}))
 
 const menuEase = [0.32, 0.72, 0, 1]
 
@@ -43,10 +39,11 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const location = useLocation()
-  const navigate = useNavigate()
   const reducedMotion = useReducedMotion()
   const isReservationPage = location.pathname === '/reservierung'
-  const isSubPage = isReservationPage || location.pathname === '/standort'
+  const isStandortPage = location.pathname === '/standort'
+  const isSectionPage = sectionPaths.has(location.pathname)
+  const isSubPage = isReservationPage || isStandortPage || isSectionPage
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -69,21 +66,6 @@ export default function Navbar() {
 
   const closeMenu = () => setMenuOpen(false)
   const solid = scrolled || menuOpen || isSubPage
-
-  const handleSectionNav = (event, href) => {
-    event.preventDefault()
-    closeMenu()
-
-    const sectionId = getSectionId(href)
-    if (!sectionId) return
-
-    if (location.pathname !== '/') {
-      navigate('/', { state: { scrollTo: sectionId } })
-      return
-    }
-
-    window.requestAnimationFrame(() => scrollToSection(sectionId))
-  }
 
   const desktopLinkClass = `text-sm font-medium tracking-wide transition-colors duration-200 ${
     solid
@@ -117,14 +99,10 @@ export default function Navbar() {
 
           <ul className="hidden items-center gap-8 md:flex">
             {navLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  onClick={(event) => handleSectionNav(event, link.href)}
-                  className={desktopLinkClass}
-                >
+              <li key={link.to}>
+                <Link to={link.to} className={desktopLinkClass}>
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -200,15 +178,15 @@ export default function Navbar() {
             >
               <nav className="flex flex-1 flex-col items-center justify-center gap-2 px-6 pb-[max(2rem,env(safe-area-inset-bottom))]">
                 {navLinks.map((link, index) => (
-                  <motion.a
-                    key={link.href}
-                    href={link.href}
-                    onClick={(event) => handleSectionNav(event, link.href)}
-                    className="font-display w-full max-w-xs rounded-2xl px-4 py-3.5 text-center text-2xl text-charcoal transition-colors duration-200 active:bg-olive/5 hover:text-terracotta"
-                    {...linkMotion(index, reducedMotion)}
-                  >
-                    {link.label}
-                  </motion.a>
+                  <motion.div key={link.to} {...linkMotion(index, reducedMotion)}>
+                    <Link
+                      to={link.to}
+                      onClick={closeMenu}
+                      className="font-display flex w-full max-w-xs items-center justify-center rounded-2xl px-4 py-3.5 text-center text-2xl text-charcoal transition-colors duration-200 active:bg-olive/5 hover:text-terracotta"
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
                 ))}
 
                 <motion.div

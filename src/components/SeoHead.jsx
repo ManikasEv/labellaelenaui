@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { siteUrl, siteDescription, siteTitle } from '../data/site'
 import { standortMeta } from '../data/restaurantSchema'
+import { sectionMeta } from '../data/siteNavigation'
 
 const pageMeta = {
   '/': {
@@ -14,6 +15,7 @@ const pageMeta = {
       'Reservieren Sie Ihren Tisch bei La Bella Elena an der Hohlen Gasse, Artherstrasse 38, 6405 Immensee.',
   },
   '/standort': standortMeta,
+  ...sectionMeta,
 }
 
 function getCanonicalUrl(pathname) {
