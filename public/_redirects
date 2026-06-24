@@ -11,5 +11,9 @@ https://www.labellaelena-hohlegasse.ch/*    https://labellaelena.ch/:splat    30
 # HTTP to HTTPS
 http://labellaelena.ch/*    https://labellaelena.ch/:splat    301!
 
+# SEO files (must be served as static files, not SPA)
+/sitemap.xml    /sitemap.xml    200
+/robots.txt     /robots.txt     200
+
 # React Router client-side routes
 /*    /index.html    200
