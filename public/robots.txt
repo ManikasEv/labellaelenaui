@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.labellaelena.ch/sitemap.xml
+Sitemap: https://labellaelena.ch/sitemap.xml
