@@ -12,13 +12,19 @@ export const siteTitle =
   'La Bella Elena — Griechisch-Italienisches Restaurant an der Hohlen Gasse, Immensee'
 
 export const siteDescription =
-  '«Una faccia, una razza — ob Griechenland oder Italien, am Ende zählt nur: dass es schmeckt wie bei Mamma.» Griechisch-Italienisches Restaurant an der Hohlen Gasse in Immensee. Zwei Kulturen, ein Spirit.'
+  'La Bella Elena — Griechisch-Italienisches Restaurant an der Hohlen Gasse in Immensee. Artherstrasse 38, 6405 Immensee. Tel. +41 41 850 13 13.'
 
 export const siteKeywords =
   'La Bella Elena, Restaurant Immensee, Griechisch-Italienisch, Hohle Gasse, Reservierung, Pizzeria, Ristorante'
 
-export const ogImage = `${siteUrl}/og-image.jpg`
-export const ogImageAlt = 'Terrasse von La Bella Elena an der Hohlen Gasse in Immensee'
+export const restaurantImageUrl = `${siteUrl}/images/restaurant.jpg`
+export const searchPreviewImageUrl = `${siteUrl}/images/search-preview.jpg`
+export const restaurantImageAlt =
+  'La Bella Elena — Terrasse und Restaurant an der Hohlen Gasse in Immensee'
 
-export const logoUrl = `${siteUrl}/logo.png`
-export const faviconUrl = `${siteUrl}/bellalogo.jpg`
+export const logoUrl = `${siteUrl}/images/logo.png`
+export const faviconUrl = `${siteUrl}/favicon-192.png`
+export const ogImage = searchPreviewImageUrl
+export const ogImageWidth = 1200
+export const ogImageHeight = 630
+export const ogImageAlt = restaurantImageAlt

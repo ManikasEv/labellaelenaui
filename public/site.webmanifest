@@ -1,0 +1,32 @@
+{
+  "name": "La Bella Elena",
+  "short_name": "Bella Elena",
+  "description": "Griechisch-Italienisches Restaurant an der Hohlen Gasse in Immensee",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f2f8fa",
+  "theme_color": "#1f6575",
+  "lang": "de-CH",
+  "icons": [
+    {
+      "src": "/favicon-48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

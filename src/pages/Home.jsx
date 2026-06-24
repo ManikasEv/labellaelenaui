@@ -5,6 +5,7 @@ import About from '../components/About'
 import Gallery from '../components/Gallery'
 import Menu from '../components/Menu'
 import Contact from '../components/Contact'
+import SeoCrawlImages from '../components/SeoCrawlImages'
 import ScrollReveal from '../components/ScrollReveal'
 import { scrollToSection } from '../utils/scrollToSection'
 
@@ -33,6 +34,7 @@ export default function Home() {
 
   return (
     <>
+      <SeoCrawlImages />
       <ScrollReveal variant="hero">
         <Hero />
       </ScrollReveal>
