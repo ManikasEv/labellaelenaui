@@ -106,7 +106,7 @@ export default function Contact() {
                 ))}
               </ul>
               <p className="mt-3 text-xs text-charcoal/50">
-                Reservierungen bis 21:30 Uhr möglich.
+                Di &amp; Mi geschlossen. Reservierungen alle 30 Min. Küche schliesst Mo, Do–Sa um 21:30, So &amp; Feiertage um 20:30.
               </p>
             </div>
           </div>

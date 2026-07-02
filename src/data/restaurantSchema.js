@@ -155,7 +155,7 @@ export function getRestaurantSchemaGraph() {
             '@type': 'OpeningHoursSpecification',
             dayOfWeek: ['Monday', 'Thursday', 'Friday', 'Saturday'],
             opens: '18:00',
-            closes: '00:00',
+            closes: '23:30',
           },
           {
             '@type': 'OpeningHoursSpecification',

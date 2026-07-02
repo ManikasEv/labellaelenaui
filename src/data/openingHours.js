@@ -1,95 +1,111 @@
 // dayOfWeek: 0 = Sonntag, 1 = Montag, … 6 = Samstag
-// Leeres Array = geschlossen
+
+const WEEKDAY_PERIODS = [
+  { open: '11:30', close: '14:30', kitchenClose: '14:30' },
+  { open: '18:00', close: '23:30', kitchenClose: '21:30' },
+]
+
+const SUNDAY_PERIODS = [
+  { open: '11:00', close: '14:00', kitchenClose: '14:00' },
+  { open: '17:30', close: '22:00', kitchenClose: '20:30' },
+]
+
 export const weeklySchedule = {
-  0: [{ open: '11:00', close: '14:00' }, { open: '17:30', close: '22:00' }],
-  1: [{ open: '11:30', close: '14:30' }, { open: '18:00', close: '24:00' }],
+  0: SUNDAY_PERIODS,
+  1: WEEKDAY_PERIODS,
   2: [],
   3: [],
-  4: [{ open: '11:30', close: '14:30' }, { open: '18:00', close: '24:00' }],
-  5: [{ open: '11:30', close: '14:30' }, { open: '18:00', close: '24:00' }],
-  6: [{ open: '11:30', close: '14:30' }, { open: '18:00', close: '24:00' }],
+  4: WEEKDAY_PERIODS,
+  5: WEEKDAY_PERIODS,
+  6: WEEKDAY_PERIODS,
 }
+
+/** Schweizer Feiertage (gleiche Zeiten wie Sonntag). */
+const PUBLIC_HOLIDAYS = new Set([
+  '2025-01-01',
+  '2025-04-18',
+  '2025-04-21',
+  '2025-05-29',
+  '2025-06-09',
+  '2025-08-01',
+  '2025-12-25',
+  '2025-12-26',
+  '2026-01-01',
+  '2026-04-03',
+  '2026-04-06',
+  '2026-05-14',
+  '2026-05-25',
+  '2026-08-01',
+  '2026-12-25',
+  '2026-12-26',
+  '2027-01-01',
+  '2027-03-26',
+  '2027-03-29',
+  '2027-05-06',
+  '2027-05-17',
+  '2027-08-01',
+  '2027-12-25',
+  '2027-12-26',
+])
 
 const DAY_NAMES = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag']
-const DISPLAY_ORDER = [1, 2, 3, 4, 5, 6, 0]
-
-function formatCloseTime(close) {
-  return close === '24:00' ? '00:00' : close
-}
 
 function formatDayHours(periods) {
   if (!periods?.length) return 'Geschlossen'
-  return periods.map((p) => `${p.open} – ${formatCloseTime(p.close)}`).join(' · ')
+  return periods.map((p) => `${p.open} – ${p.close}`).join(' · ')
 }
 
-export const openingHoursDisplay = DISPLAY_ORDER.map((day) => {
-  const periods = weeklySchedule[day] || []
+export const openingHoursDisplay = [
+  {
+    day: 'Montag, Donnerstag – Samstag',
+    hours: formatDayHours(WEEKDAY_PERIODS),
+    closed: false,
+    periods: WEEKDAY_PERIODS.map((p) => `${p.open} – ${p.close}`),
+  },
+  {
+    day: 'Dienstag & Mittwoch',
+    hours: 'Geschlossen',
+    closed: true,
+    periods: [],
+  },
+  {
+    day: 'Sonntag & Feiertage',
+    hours: formatDayHours(SUNDAY_PERIODS),
+    closed: false,
+    periods: SUNDAY_PERIODS.map((p) => `${p.open} – ${p.close}`),
+  },
+]
 
-  return {
-    day: DAY_NAMES[day],
-    hours: formatDayHours(periods),
-    closed: !periods.length,
-    periods: periods.map((p) => `${p.open} – ${formatCloseTime(p.close)}`),
-  }
-})
-
-const DAY_ABBREV = {
-  Sonntag: 'So',
-  Montag: 'Mo',
-  Dienstag: 'Di',
-  Mittwoch: 'Mi',
-  Donnerstag: 'Do',
-  Freitag: 'Fr',
-  Samstag: 'Sa',
-}
-
-const CALENDAR_ORDER = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag']
-
-function formatDayGroupLabel(dayNames) {
-  const indices = dayNames.map((d) => CALENDAR_ORDER.indexOf(d)).sort((a, b) => a - b)
-  const ranges = []
-  let rangeStart = indices[0]
-  let rangeEnd = indices[0]
-
-  for (let i = 1; i < indices.length; i++) {
-    if (indices[i] === rangeEnd + 1) {
-      rangeEnd = indices[i]
-    } else {
-      ranges.push([rangeStart, rangeEnd])
-      rangeStart = rangeEnd = indices[i]
-    }
-  }
-  ranges.push([rangeStart, rangeEnd])
-
-  return ranges
-    .map(([start, end]) => {
-      const from = DAY_ABBREV[CALENDAR_ORDER[start]]
-      const to = DAY_ABBREV[CALENDAR_ORDER[end]]
-      return start === end ? from : `${from}–${to}`
-    })
-    .join(', ')
-}
-
-export const openingHoursCompact = openingHoursDisplay.reduce((groups, entry) => {
-  const last = groups[groups.length - 1]
-
-  if (last && last.hours === entry.hours) {
-    last.days.push(entry.day)
-    last.label = formatDayGroupLabel(last.days)
-    return groups
-  }
-
-  groups.push({
-    days: [entry.day],
-    label: DAY_ABBREV[entry.day] || entry.day.slice(0, 2),
-    hours: entry.hours,
-    closed: entry.closed,
-  })
-
-  return groups
-}, [])
-
-export const LAST_RESERVATION_SLOT = '21:30'
+export const openingHoursCompact = [
+  {
+    days: ['Montag'],
+    label: 'Mo',
+    hours: formatDayHours(WEEKDAY_PERIODS),
+    closed: false,
+    kitchenNote: 'Küche bis 14:30 & 21:30',
+  },
+  {
+    days: ['Dienstag', 'Mittwoch'],
+    label: 'Di–Mi',
+    hours: 'Geschlossen',
+    closed: true,
+    kitchenNote: null,
+  },
+  {
+    days: ['Donnerstag', 'Freitag', 'Samstag'],
+    label: 'Do–Sa',
+    hours: formatDayHours(WEEKDAY_PERIODS),
+    closed: false,
+    kitchenNote: 'Küche bis 14:30 & 21:30',
+  },
+  {
+    days: ['Sonntag'],
+    label: 'So & Feiertage',
+    hours: formatDayHours(SUNDAY_PERIODS),
+    closed: false,
+    kitchenNote: 'Küche bis 14:00 & 20:30',
+  },
+]
 
 const SLOT_INTERVAL = 30
 
@@ -111,14 +127,28 @@ function toTime(minutes) {
   return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`
 }
 
-function generateSlots(open, close) {
-  const slots = []
-  let current = toMinutes(open)
-  const end = toMinutes(close)
-  const lastAllowed = toMinutes(LAST_RESERVATION_SLOT)
+export function isPublicHoliday(dateStr) {
+  return PUBLIC_HOLIDAYS.has(dateStr)
+}
 
-  while (current + SLOT_INTERVAL <= end) {
-    if (current <= lastAllowed) slots.push(toTime(current))
+export function usesSundayHours(dateStr) {
+  const day = new Date(`${dateStr}T12:00:00`).getDay()
+  return day === 0 || isPublicHoliday(dateStr)
+}
+
+export function getPeriodsForDate(dateStr) {
+  if (isPublicHoliday(dateStr)) return SUNDAY_PERIODS
+  const day = new Date(`${dateStr}T12:00:00`).getDay()
+  return weeklySchedule[day] ?? []
+}
+
+function generateSlots(period) {
+  const slots = []
+  let current = toMinutes(period.open)
+  const last = toMinutes(period.kitchenClose)
+
+  while (current <= last) {
+    slots.push(toTime(current))
     current += SLOT_INTERVAL
   }
 
@@ -126,9 +156,7 @@ function generateSlots(open, close) {
 }
 
 export function isOpenOnDate(dateStr) {
-  const day = new Date(`${dateStr}T12:00:00`).getDay()
-  const periods = weeklySchedule[day]
-  return Boolean(periods?.length)
+  return getPeriodsForDate(dateStr).length > 0
 }
 
 export function isBlockedOnDate(dateStr, blockedDates = []) {
@@ -140,14 +168,13 @@ export function isClosedOnDate(dateStr, blockedDates = []) {
 }
 
 export function isWeekdayClosed(jsDayOfWeek) {
-  return !weeklySchedule[jsDayOfWeek]?.length
+  return jsDayOfWeek === 2 || jsDayOfWeek === 3
 }
 
 export function getTimeSlotsForDate(dateStr, blockedDates = []) {
   if (isClosedOnDate(dateStr, blockedDates)) return []
 
-  const day = new Date(`${dateStr}T12:00:00`).getDay()
-  const slots = weeklySchedule[day].flatMap((p) => generateSlots(p.open, p.close))
+  const slots = getPeriodsForDate(dateStr).flatMap((period) => generateSlots(period))
 
   const today = toLocalDateStr(new Date())
   if (dateStr !== today) return slots
@@ -176,24 +203,24 @@ export function getAvailableDates(daysAhead = 90, blockedDates = []) {
 }
 
 export function formatDateLabel(dateStr) {
-  return new Date(`${dateStr}T12:00:00`).toLocaleDateString('de-CH', {
+  const label = new Date(`${dateStr}T12:00:00`).toLocaleDateString('de-CH', {
     weekday: 'long',
     day: 'numeric',
     month: 'long',
     year: 'numeric',
   })
+  return isPublicHoliday(dateStr) ? `${label} (Feiertag)` : label
 }
 
 export function getTimeSlotGroups(dateStr, blockedDates = []) {
   const available = getTimeSlotsForDate(dateStr, blockedDates)
   if (!available.length) return []
 
-  const day = new Date(`${dateStr}T12:00:00`).getDay()
-  const periods = weeklySchedule[day]
+  const periods = getPeriodsForDate(dateStr)
   const groups = []
 
   periods.forEach((period) => {
-    const periodSlots = generateSlots(period.open, period.close)
+    const periodSlots = generateSlots(period)
     const slots = available.filter((slot) => periodSlots.includes(slot))
     if (!slots.length) return
 
@@ -207,4 +234,10 @@ export function getTimeSlotGroups(dateStr, blockedDates = []) {
   })
 
   return groups
+}
+
+export function getLastKitchenClose(dateStr) {
+  const periods = getPeriodsForDate(dateStr)
+  const dinner = periods[periods.length - 1]
+  return dinner?.kitchenClose ?? '21:30'
 }
