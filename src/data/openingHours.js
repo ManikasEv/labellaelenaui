@@ -76,34 +76,39 @@ export const openingHoursDisplay = [
   },
 ]
 
+function formatPeriodLines(periods) {
+  if (!periods?.length) return ['Geschlossen']
+  return periods.map((p) => `${p.open} – ${p.close}`)
+}
+
 export const openingHoursCompact = [
   {
     days: ['Montag'],
     label: 'Mo',
     hours: formatDayHours(WEEKDAY_PERIODS),
+    periodLines: formatPeriodLines(WEEKDAY_PERIODS),
     closed: false,
-    kitchenNote: 'Küche bis 14:30 & 21:30',
   },
   {
     days: ['Dienstag', 'Mittwoch'],
     label: 'Di–Mi',
     hours: 'Geschlossen',
+    periodLines: ['Geschlossen'],
     closed: true,
-    kitchenNote: null,
   },
   {
     days: ['Donnerstag', 'Freitag', 'Samstag'],
     label: 'Do–Sa',
     hours: formatDayHours(WEEKDAY_PERIODS),
+    periodLines: formatPeriodLines(WEEKDAY_PERIODS),
     closed: false,
-    kitchenNote: 'Küche bis 14:30 & 21:30',
   },
   {
     days: ['Sonntag'],
     label: 'So & Feiertage',
     hours: formatDayHours(SUNDAY_PERIODS),
+    periodLines: formatPeriodLines(SUNDAY_PERIODS),
     closed: false,
-    kitchenNote: 'Küche bis 14:00 & 20:30',
   },
 ]
 

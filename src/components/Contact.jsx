@@ -81,33 +81,37 @@ export default function Contact() {
             </div>
 
             <div className="rounded-2xl border border-charcoal/5 bg-white p-6 shadow-sm lg:p-5">
-              <h3 className="font-display mb-3 text-lg text-charcoal">Öffnungszeiten</h3>
-              <ul className="space-y-2.5">
+              <h3 className="font-display mb-4 text-lg text-charcoal">Öffnungszeiten</h3>
+              <ul className="divide-y divide-charcoal/8">
                 {openingHours.map((entry) => (
                   <li
                     key={entry.label}
-                    className="grid grid-cols-[3.25rem_minmax(0,1fr)] items-start gap-x-3 text-sm"
+                    className="flex items-start justify-between gap-4 py-3 first:pt-0 last:pb-0"
                   >
                     <span
-                      className={`font-medium ${
+                      className={`shrink-0 text-sm font-medium ${
                         entry.closed ? 'text-charcoal/45' : 'text-charcoal'
                       }`}
                     >
                       {entry.label}
                     </span>
-                    <span
-                      className={`text-right leading-snug ${
-                        entry.closed ? 'italic text-charcoal/40' : 'text-charcoal/65'
-                      }`}
-                    >
-                      {entry.hours}
-                    </span>
+                    <div className="min-w-0 text-right text-sm leading-relaxed">
+                      {entry.periodLines.map((line) => (
+                        <p
+                          key={line}
+                          className={
+                            entry.closed
+                              ? 'italic text-charcoal/40'
+                              : 'text-charcoal/70'
+                          }
+                        >
+                          {line}
+                        </p>
+                      ))}
+                    </div>
                   </li>
                 ))}
               </ul>
-              <p className="mt-3 text-xs text-charcoal/50">
-                Di &amp; Mi geschlossen. Reservierungen alle 30 Min. Küche schliesst Mo, Do–Sa um 21:30, So &amp; Feiertage um 20:30.
-              </p>
             </div>
           </div>
 
