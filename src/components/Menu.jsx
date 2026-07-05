@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react'
 import { menuCategories, originDeclaration, dietaryTagLabels } from '../data/menu'
-import {
-  courseLabels,
-  getTodayDishes,
-  showHeuteMenu,
-} from '../data/dailyDishes'
+import { summerMenuItems, summerMenuMeta } from '../data/summerMenu'
+import { getLunchMenuForDate } from '../data/lunchMenu'
 
 const tagAbbrev = {
   vegan: 'V',
@@ -13,9 +10,10 @@ const tagAbbrev = {
   glutenFree: 'GF',
 }
 
-const menuTabs = [
-  ...menuCategories,
-  ...(showHeuteMenu ? [{ id: 'heute', title: 'Heute' }] : []),
+const topSections = [
+  { id: 'karte', title: 'Speisekarte' },
+  { id: 'sommer', title: 'Sommer-Menü', badge: 'Saison' },
+  { id: 'tages', title: 'Tagesmenü', badge: 'Diese Woche' },
 ]
 
 function MenuRow({ item }) {
@@ -25,7 +23,7 @@ function MenuRow({ item }) {
         <div className="space-y-2">
           {item.prices.map((entry) => (
             <div key={entry.label} className="menu-row-line">
-              <span className="menu-row-name font-display text-charcoal group-hover:text-terracotta transition-colors">
+              <span className="menu-row-name font-display text-charcoal transition-colors group-hover:text-terracotta">
                 {item.name}
                 <span className="ml-2 font-sans text-xs font-normal text-charcoal/45">
                   {entry.label}
@@ -35,14 +33,12 @@ function MenuRow({ item }) {
               <span className="menu-row-price font-display text-terracotta">{entry.price}</span>
             </div>
           ))}
-          {item.description && (
-            <p className="menu-row-desc">{item.description}</p>
-          )}
+          {item.description && <p className="menu-row-desc">{item.description}</p>}
         </div>
       ) : (
         <>
           <div className="menu-row-line">
-            <span className="menu-row-name font-display text-charcoal group-hover:text-terracotta transition-colors">
+            <span className="menu-row-name font-display text-charcoal transition-colors group-hover:text-terracotta">
               {item.name}
             </span>
             {item.price ? (
@@ -52,9 +48,7 @@ function MenuRow({ item }) {
               </>
             ) : null}
           </div>
-          {item.description && (
-            <p className="menu-row-desc">{item.description}</p>
-          )}
+          {item.description && <p className="menu-row-desc">{item.description}</p>}
         </>
       )}
       {item.tags?.length > 0 && (
@@ -70,48 +64,107 @@ function MenuRow({ item }) {
   )
 }
 
-function DailyMenuPanel() {
-  const { dayName, date, dishes, menuPrice, isClosed } = getTodayDishes()
+function LunchMenuPanel() {
+  const { closed, week, dateLabel } = getLunchMenuForDate()
 
-  if (isClosed) {
+  if (closed) {
     return (
-      <div className="py-8 text-center">
-        <p className="font-display text-xl text-charcoal/70">{date}</p>
-        <p className="mt-4 text-charcoal/55">
-          An diesem Tag haben wir geschlossen.
+      <div className="menu-feature-card py-10 text-center">
+        <p className="font-display text-xl text-charcoal/70">{dateLabel}</p>
+        <p className="mt-3 text-charcoal/55">Heute haben wir geschlossen.</p>
+      </div>
+    )
+  }
+
+  if (!week) {
+    return (
+      <div className="menu-feature-card py-10 text-center">
+        <p className="font-display text-lg text-charcoal/70">Tagesmenü</p>
+        <p className="mt-3 text-sm text-charcoal/55">
+          Das aktuelle Mittagsmenü wird in Kürze veröffentlicht.
         </p>
       </div>
     )
   }
 
   return (
-    <div>
-      <h4 className="mb-2 text-center font-display text-lg text-terracotta">
-        {dayName}
-        <span className="ml-2 font-sans text-xs font-medium tracking-wider text-terracotta/70 uppercase">
-          Heute
-        </span>
-      </h4>
-      <p className="mb-6 text-center text-sm text-charcoal/50">{date}</p>
+    <div className="menu-feature-card">
+      <div className="menu-feature-header">
+        <div>
+          <p className="menu-feature-eyebrow">Mittagsservice · 11:30 – 14:30</p>
+          <h4 className="font-display text-2xl text-charcoal">Tagesmenü</h4>
+        </div>
+        <span className="menu-feature-badge">{week.label}</span>
+      </div>
+
+      <p className="menu-feature-intro">
+        Jede Woche neue Gerichte — Vorspeise, Hauptgericht und Dessert à la carte.
+      </p>
+
+      <div className="menu-lunch-grid">
+        <article className="menu-lunch-block">
+          <p className="menu-lunch-label">Vorspeise</p>
+          <p className="font-display text-lg text-charcoal">{week.starter.name}</p>
+        </article>
+
+        <div className="menu-lunch-mains">
+          <p className="menu-lunch-label">Hauptgerichte</p>
+          <div className="space-y-4">
+            {week.mains.map((dish) => (
+              <article key={dish.name} className="menu-lunch-dish">
+                <div className="menu-lunch-dish-head">
+                  <h5 className="font-display text-lg text-charcoal">{dish.name}</h5>
+                  <span className="menu-lunch-price font-display text-terracotta">
+                    <span className="menu-price-currency">CHF</span> {dish.price}
+                  </span>
+                </div>
+                {dish.description && (
+                  <p className="menu-lunch-dish-desc">{dish.description}</p>
+                )}
+                {dish.tags?.includes('vegan') && (
+                  <span className="menu-lunch-tag">Vegan</span>
+                )}
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <article className="menu-lunch-block menu-lunch-dessert">
+          <p className="menu-lunch-label">Dessert</p>
+          <div className="flex items-baseline justify-between gap-3">
+            <p className="font-display text-lg text-charcoal">{week.dessert.name}</p>
+            <span className="menu-lunch-price font-display text-terracotta">
+              <span className="menu-price-currency">CHF</span> {week.dessert.price}
+            </span>
+          </div>
+        </article>
+      </div>
+    </div>
+  )
+}
+
+function SummerMenuPanel() {
+  return (
+    <div className="menu-feature-card menu-feature-card-summer">
+      <div className="menu-feature-header">
+        <div>
+          <p className="menu-feature-eyebrow">La Bella Elena · Hohle Gasse</p>
+          <h4 className="font-display text-3xl text-olive">{summerMenuMeta.title}</h4>
+        </div>
+        <span className="menu-feature-badge menu-feature-badge-summer">Sommer 2026</span>
+      </div>
+
+      <p className="menu-feature-intro">{summerMenuMeta.subtitle}</p>
+
       <ul className="menu-list">
-        {Object.entries(dishes).map(([course, dish]) => (
-          <MenuRow
-            key={course}
-            item={{
-              name: dish.name,
-              description: `${courseLabels[course]} — ${dish.description}`,
-              price: dish.price,
-            }}
-          />
+        {summerMenuItems.map((item) => (
+          <MenuRow key={item.name} item={item} />
         ))}
-        <MenuRow
-          item={{
-            name: 'Tagesmenü komplett',
-            description: 'Suppe · Hauptgericht · Dessert',
-            price: menuPrice,
-          }}
-        />
       </ul>
+
+      {summerMenuMeta.note && (
+        <p className="menu-summer-note">{summerMenuMeta.note}</p>
+      )}
     </div>
   )
 }
@@ -153,76 +206,103 @@ function OriginDeclaration() {
 }
 
 export default function Menu() {
-  const [activeId, setActiveId] = useState(menuTabs[0].id)
-  const activeTab = menuTabs.find((t) => t.id === activeId) ?? menuTabs[0]
-  const activeCategory = menuCategories.find((c) => c.id === activeId)
+  const [activeSection, setActiveSection] = useState('karte')
+  const [activeCategoryId, setActiveCategoryId] = useState(menuCategories[0].id)
 
   useEffect(() => {
-    if (
-      showHeuteMenu &&
-      (window.location.hash === '#menu-heute' || window.location.hash === '#menu-taegliches')
-    ) {
-      setActiveId('heute')
+    const hash = window.location.hash
+    if (hash === '#menu-sommer') setActiveSection('sommer')
+    else if (hash === '#menu-tages' || hash === '#menu-mittag' || hash === '#menu-heute') {
+      setActiveSection('tages')
+    } else if (hash.startsWith('#menu-')) {
+      const catId = hash.replace('#menu-', '')
+      const match = menuCategories.find((c) => c.id === catId)
+      if (match) {
+        setActiveSection('karte')
+        setActiveCategoryId(match.id)
+      }
     }
   }, [])
 
-  const handleTabChange = (id) => {
-    setActiveId(id)
-    if (id === 'heute') {
-      window.history.replaceState(null, '', '#menu-heute')
-    } else {
-      window.history.replaceState(null, '', '#menu')
-    }
+  const activeCategory = menuCategories.find((c) => c.id === activeCategoryId) ?? menuCategories[0]
+
+  const handleSectionChange = (id) => {
+    setActiveSection(id)
+    if (id === 'sommer') window.history.replaceState(null, '', '#menu-sommer')
+    else if (id === 'tages') window.history.replaceState(null, '', '#menu-tages')
+    else window.history.replaceState(null, '', '#menu')
+  }
+
+  const handleCategoryChange = (id) => {
+    setActiveCategoryId(id)
+    window.history.replaceState(null, '', `#menu-${id}`)
   }
 
   return (
     <section id="menu" className="overflow-x-hidden bg-white py-16 sm:py-24 lg:py-32">
       <div className="mx-auto max-w-3xl px-5 sm:px-6 lg:px-8">
-        <div className="mb-12 text-center">
+        <div className="mb-10 text-center sm:mb-12">
           <p className="mb-3 text-sm font-medium tracking-[0.2em] text-terracotta uppercase">
             Speisekarte
           </p>
           <h2 className="font-display mb-3 text-4xl text-charcoal lg:text-5xl">Menù</h2>
           <p className="mx-auto max-w-lg text-sm text-charcoal/55">
-            Griechisch-italienische Küche — frisch zubereitet mit Leidenschaft.
+            Mittagsservice, Sommer-Spezialitäten und unsere klassische griechisch-italienische Karte.
           </p>
         </div>
 
-        <nav className="menu-nav scrollbar-none" aria-label="Menükategorien">
-          {menuTabs.map((tab) => (
+        <nav className="menu-section-nav" aria-label="Menübereiche">
+          {topSections.map((section) => (
             <button
-              key={tab.id}
+              key={section.id}
               type="button"
-              onClick={() => handleTabChange(tab.id)}
-              className={`menu-nav-link ${activeId === tab.id ? 'menu-nav-link-active' : ''}`}
-              aria-current={activeId === tab.id ? 'true' : undefined}
+              onClick={() => handleSectionChange(section.id)}
+              className={`menu-section-btn ${
+                activeSection === section.id ? 'menu-section-btn-active' : ''
+              }`}
+              aria-current={activeSection === section.id ? 'true' : undefined}
             >
-              {tab.title}
+              <span>{section.title}</span>
+              {section.badge && (
+                <span className="menu-section-badge">{section.badge}</span>
+              )}
             </button>
           ))}
         </nav>
 
-        <section key={activeId} className="menu-panel">
-          <header className="menu-category-header">
-            <h3 className="font-display text-2xl text-olive">{activeTab.title}</h3>
-          </header>
+        {activeSection === 'karte' && (
+          <nav className="menu-nav scrollbar-none" aria-label="Menükategorien">
+            {menuCategories.map((tab) => (
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => handleCategoryChange(tab.id)}
+                className={`menu-nav-link ${
+                  activeCategoryId === tab.id ? 'menu-nav-link-active' : ''
+                }`}
+                aria-current={activeCategoryId === tab.id ? 'true' : undefined}
+              >
+                {tab.title.split(' — ')[0]}
+              </button>
+            ))}
+          </nav>
+        )}
 
-          {activeId === 'heute' ? (
+        <section key={activeSection + activeCategoryId} className="menu-panel">
+          {activeSection === 'tages' && <LunchMenuPanel />}
+          {activeSection === 'sommer' && <SummerMenuPanel />}
+          {activeSection === 'karte' && (
             <>
-              <p className="mb-8 text-center text-xs italic text-charcoal/45">
-                Unser Tagesmenü wechselt täglich — hier sehen Sie, was heute auf dem Teller ist.
-              </p>
-              <DailyMenuPanel />
-            </>
-          ) : (
-            <>
-              {activeCategory?.note && (
+              <header className="menu-category-header">
+                <h3 className="font-display text-2xl text-olive">{activeCategory.title}</h3>
+              </header>
+              {activeCategory.note && (
                 <p className="mb-5 text-center text-xs italic text-charcoal/45">
                   {activeCategory.note}
                 </p>
               )}
               <ul className="menu-list">
-                {activeCategory?.items.map((item) => (
+                {activeCategory.items.map((item) => (
                   <MenuRow key={item.name} item={item} />
                 ))}
               </ul>
@@ -230,12 +310,14 @@ export default function Menu() {
           )}
         </section>
 
-        <div className="menu-legend">
-          <span title="Vegan">V</span>
-          <span title="Vegetarisch">Vegetarisch</span>
-          <span title="Laktosefrei">LF</span>
-          <span title="Glutenfrei">GF</span>
-        </div>
+        {activeSection === 'karte' && (
+          <div className="menu-legend">
+            <span title="Vegan">V</span>
+            <span title="Vegetarisch">Vegetarisch</span>
+            <span title="Laktosefrei">LF</span>
+            <span title="Glutenfrei">GF</span>
+          </div>
+        )}
 
         <OriginDeclaration />
 
