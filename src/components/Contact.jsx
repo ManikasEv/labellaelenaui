@@ -19,11 +19,11 @@ export default function Contact() {
             Kontakt
           </p>
           <h2 className="font-display mb-3 text-4xl text-charcoal lg:mb-2 lg:text-4xl">
-            La Bella Elena — Hohle Gasse, Immensee
+            La Bella Elena — Hohlen Gasse in Immensee
           </h2>
           <p className="mx-auto max-w-xl text-sm text-charcoal/60 lg:text-base">
-            Artherstrasse 38, 6405 Immensee — griechisch-italienisches Restaurant an der Hohlen
-            Gasse, in der Nähe von Küssnacht am Rigi.
+            Restaurant an der Hohlen Gasse in Immensee — Artherstrasse 38, 6405 Immensee.
+            Griechisch-italienische Küche nahe Küssnacht am Rigi.
           </p>
         </div>
 

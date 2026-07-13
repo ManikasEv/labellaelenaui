@@ -19,11 +19,11 @@ export default function Standort() {
             Standort
           </p>
           <h1 className="font-display mb-4 text-3xl text-cream sm:text-4xl lg:text-5xl">
-            La Bella Elena an der Hohlen Gasse
+            Hohlen Gasse in Immensee
           </h1>
           <p className="text-base leading-relaxed text-cream/85 sm:text-lg">
-            Griechisch-italienisches Restaurant in Immensee — {formattedAddress}. In der Nähe von{' '}
-            {restaurantLocation.region}.
+            La Bella Elena — Restaurant an der <strong>Hohlen Gasse in Immensee</strong>.{' '}
+            {formattedAddress}, nahe {restaurantLocation.region}.
           </p>
         </div>
       </section>

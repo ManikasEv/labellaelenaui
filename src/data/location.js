@@ -23,7 +23,10 @@ export const fullAddressLine = `${restaurantLocation.name}, ${restaurantLocation
 
 export const localSeoNames = [
   'La Bella Elena',
+  'La Bella Elena Hohle Gasse',
+  'Restaurant an der Hohlen Gasse in Immensee',
   'Restaurant Hohle Gasse Immensee',
+  'Hohle Gasse Immensee',
   'Restaurant Hohle Gasse Küssnacht',
   'Griechisch-Italienisches Restaurant Immensee',
 ]

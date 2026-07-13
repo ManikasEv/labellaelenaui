@@ -18,9 +18,9 @@ export function getRestaurantSchemaGraph() {
         '@id': `${siteUrl}/#website`,
         url: `${siteUrl}/`,
         name: 'La Bella Elena',
-        alternateName: ['labellaelena', 'labellaelena.ch', 'La Bella Elena Immensee'],
+        alternateName: ['labellaelena', 'labellaelena.ch', 'La Bella Elena Immensee', 'Hohle Gasse Immensee'],
         description:
-          'Griechisch-Italienisches Restaurant an der Hohlen Gasse, Artherstrasse 38, 6405 Immensee.',
+          'La Bella Elena — Restaurant an der Hohlen Gasse in Immensee. Artherstrasse 38, 6405 Immensee.',
         publisher: { '@id': `${siteUrl}/#restaurant` },
         inLanguage: 'de-CH',
       },
@@ -29,9 +29,9 @@ export function getRestaurantSchemaGraph() {
         '@type': 'WebPage',
         '@id': `${siteUrl}/`,
         url: `${siteUrl}/`,
-        name: 'La Bella Elena — Restaurant Hohle Gasse Immensee',
+        name: 'La Bella Elena — Restaurant an der Hohlen Gasse in Immensee',
         description:
-          'Griechisch-Italienisches Restaurant an der Hohlen Gasse, Artherstrasse 38, 6405 Immensee.',
+          'La Bella Elena — Restaurant an der Hohlen Gasse in Immensee. Artherstrasse 38, 6405 Immensee.',
         isPartOf: { '@id': `${siteUrl}/#website` },
         about: { '@id': `${siteUrl}/#restaurant` },
         inLanguage: 'de-CH',
@@ -65,12 +65,14 @@ export function getRestaurantSchemaGraph() {
           'labellaelena',
           'labellaelena.ch',
           'La Bella Elena Hohle Gasse',
+          'Restaurant an der Hohlen Gasse in Immensee',
           'Restaurant Hohle Gasse Immensee',
+          'Hohle Gasse Immensee',
           'Restaurant Hohle Gasse Küssnacht',
           'Restaurant Artherstrasse 38 Immensee',
         ],
         description:
-          'Griechisch-Italienisches Restaurant an der Hohlen Gasse in Immensee. Artherstrasse 38, 6405 Immensee — in der Nähe von Küssnacht am Rigi.',
+          'La Bella Elena — Restaurant an der Hohlen Gasse in Immensee. Griechisch-italienische Küche, Artherstrasse 38, 6405 Immensee — nahe Küssnacht am Rigi.',
         url: `${siteUrl}/`,
         telephone: restaurantPhoneTel,
         email: restaurantEmail,
@@ -180,7 +182,7 @@ export function getRestaurantSchemaGraph() {
             name: 'Wo befindet sich La Bella Elena?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: `La Bella Elena befindet sich an der Hohlen Gasse, ${formattedAddress}, Schweiz — nahe Küssnacht am Rigi.`,
+              text: `La Bella Elena befindet sich an der Hohlen Gasse in Immensee — ${formattedAddress}, Schweiz, nahe Küssnacht am Rigi.`,
             },
           },
           {
@@ -188,7 +190,15 @@ export function getRestaurantSchemaGraph() {
             name: 'Welches Restaurant ist an der Hohlen Gasse in Immensee?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'An der Hohlen Gasse in Immensee finden Sie La Bella Elena — ein griechisch-italienisches Restaurant an der Artherstrasse 38, 6405 Immensee.',
+              text: 'An der Hohlen Gasse in Immensee finden Sie La Bella Elena — ein griechisch-italienisches Restaurant an der Artherstrasse 38, 6405 Immensee (Hohle Gasse).',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Gibt es ein Restaurant Hohle Gasse Immensee?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Ja — La Bella Elena ist das Restaurant an der Hohlen Gasse in Immensee, Artherstrasse 38, 6405 Immensee.',
             },
           },
           {
@@ -216,8 +226,8 @@ export function getRestaurantSchemaGraph() {
 }
 
 export const standortMeta = {
-  title: 'Standort — La Bella Elena, Hohle Gasse Artherstrasse 38, Immensee',
-  description: `La Bella Elena, Restaurant an der Hohlen Gasse: ${formattedAddress}. Griechisch-italienisches Restaurant nahe Küssnacht am Rigi. Route planen & Tisch reservieren.`,
+  title: 'Standort — Hohlen Gasse in Immensee | La Bella Elena',
+  description: `Restaurant an der Hohlen Gasse in Immensee: La Bella Elena, ${formattedAddress}. Hohle Gasse · nahe Küssnacht am Rigi. Route planen & Tisch reservieren.`,
 }
 
 export const standortDirectionsUrl = mapsDirectionsUrl
