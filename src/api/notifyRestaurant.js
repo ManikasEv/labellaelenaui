@@ -53,9 +53,7 @@ function buildGuestConfirmationMessage(reservation, reference) {
     '',
     'Falls Sie Änderungen wünschen, antworten Sie auf diese E-Mail oder rufen Sie uns an:',
     '+41 41 850 13 13',
-    '',
     'Herzliche Grüsse',
-    'Elena, Angelos & Alessio',
     'La Bella Elena',
     'Hohle Gasse · Artherstrasse 38 · 6405 Immensee',
   ]
