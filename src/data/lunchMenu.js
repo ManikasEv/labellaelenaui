@@ -6,22 +6,21 @@ import { isWeekdayClosed } from './openingHours'
  */
 export const lunchMenuWeeks = [
   {
-    id: '2026-w28',
-    validFrom: '2026-07-06',
-    validUntil: '2026-07-13',
-    label: 'Diese Woche · ab 7. Juli 2026',
+    id: '2026-w30',
+    validFrom: '2026-07-20',
+    validUntil: '2026-07-26',
+    label: 'Diese Woche · 20. – 26. Juli 2026',
     starter: {
       name: 'Gemischter Salat oder Suppe',
     },
     mains: [
       {
-        name: 'Piccata alla Milanese',
-        description:
-          'Zarte Schweineschnitzel (CH) in einer knusprigen Ei-Parmesan-Hülle goldgelb gebraten, serviert auf unseren hausgemachten Spaghetti an einer fruchtigen Tomatensauce',
+        name: 'Poulet Cordon Bleu',
+        description: 'Mit Kartoffeln oder Pommes',
         price: '22.50',
       },
       {
-        name: 'Lasagne vegane',
+        name: 'Zucchini Parmigiana',
         price: '19.50',
         tags: ['vegan'],
       },
