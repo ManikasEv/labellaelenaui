@@ -6,6 +6,7 @@ import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
 import Reservation from './pages/Reservation'
 import Standort from './pages/Standort'
+import Impressum from './pages/Impressum'
 import { homeSectionLinks } from './data/siteNavigation'
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           ))}
           <Route path="/reservierung" element={<Reservation />} />
           <Route path="/standort" element={<Standort />} />
+          <Route path="/impressum" element={<Impressum />} />
         </Routes>
       </main>
       <Footer />

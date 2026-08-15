@@ -15,6 +15,11 @@ const pageMeta = {
       'Reservieren Sie Ihren Tisch bei La Bella Elena an der Hohlen Gasse, Artherstrasse 38, 6405 Immensee.',
   },
   '/standort': standortMeta,
+  '/impressum': {
+    title: 'Impressum — Pellekara GmbH | La Bella Elena, Immensee',
+    description:
+      'Impressum der Pellekara GmbH, Betreiberin von La Bella Elena, Artherstrasse 38, 6405 Immensee. Handelsregister CH-130.4.036.404-8, UID CHE-317.534.760.',
+  },
   ...sectionMeta,
 }
 

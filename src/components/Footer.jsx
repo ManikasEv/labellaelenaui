@@ -65,11 +65,17 @@ export default function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-cream/10 pt-8 sm:flex-row">
           <p className="text-xs text-cream/40">
-            © {year} La Bella Elena. Alle Rechte vorbehalten.
+            © {year} Pellekara GmbH · La Bella Elena. Alle Rechte vorbehalten.
           </p>
-          <p className="text-xs italic text-cream/40">
-            Una faccia, una razza
-          </p>
+          <div className="flex items-center gap-4">
+            <Link
+              to="/impressum"
+              className="inline-flex items-center rounded-full border border-cream/20 px-4 py-1.5 text-xs font-medium text-cream/70 transition-colors hover:border-gold hover:text-gold"
+            >
+              Impressum
+            </Link>
+            <p className="text-xs italic text-cream/40">Una faccia, una razza</p>
+          </div>
         </div>
       </div>
     </footer>

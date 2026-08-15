@@ -43,7 +43,8 @@ export default function Navbar() {
   const isReservationPage = location.pathname === '/reservierung'
   const isStandortPage = location.pathname === '/standort'
   const isSectionPage = sectionPaths.has(location.pathname)
-  const isSubPage = isReservationPage || isStandortPage || isSectionPage
+  const isImpressumPage = location.pathname === '/impressum'
+  const isSubPage = isReservationPage || isStandortPage || isImpressumPage || isSectionPage
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)

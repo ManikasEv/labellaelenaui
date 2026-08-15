@@ -1,9 +1,9 @@
 const blockedDateNotices = [
   {
-    date: '2026-06-26',
+    date: '2026-08-13',
     message:
-      'Freitag, 26. Juni ist ausgebucht. Bitte wählen Sie ein anderes Datum.',
-    visibleUntil: '2026-06-27',
+      'Donnerstag, 13. August ist ausgebucht. Bitte wählen Sie ein anderes Datum.',
+    visibleUntil: '2026-08-14',
   },
 ]
 
