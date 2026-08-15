@@ -74,7 +74,6 @@ export default function Footer() {
             >
               Impressum
             </Link>
-            <p className="text-xs italic text-cream/40">Una faccia, una razza</p>
           </div>
         </div>
       </div>
