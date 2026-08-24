@@ -9,7 +9,6 @@ export const lunchMenuWeeks = [
     id: '2026-w34',
     validFrom: '2026-08-24',
     validUntil: '2026-08-30',
-    label: 'Diese Woche · 24. – 30. August 2026',
     starter: {
       name: 'Salat oder Suppe',
     },
