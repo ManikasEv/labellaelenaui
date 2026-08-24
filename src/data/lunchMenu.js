@@ -23,10 +23,6 @@ export const lunchMenuWeeks = [
         price: '19.50',
       },
     ],
-    dessert: {
-      name: 'Tages Dessert',
-      price: '5.00',
-    },
   },
 ]
 

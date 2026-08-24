@@ -79,7 +79,7 @@ function LunchMenuPanel() {
   if (!week) {
     return (
       <div className="menu-feature-card py-10 text-center">
-        <p className="font-display text-lg text-charcoal/70">Tagesmenü</p>
+        <p className="font-display text-lg text-charcoal/70">Mittagsmenü</p>
         <p className="mt-3 text-sm text-charcoal/55">
           Das aktuelle Mittagsmenü wird in Kürze veröffentlicht.
         </p>
@@ -98,7 +98,7 @@ function LunchMenuPanel() {
       </div>
 
       <p className="menu-feature-intro">
-        Jede Woche neue Gerichte — Vorspeise, Hauptgericht und Dessert à la carte.
+        Jede Woche neue Gerichte — Vorspeise und Hauptgericht zur Auswahl.
       </p>
 
       <div className="menu-lunch-grid">
@@ -128,16 +128,6 @@ function LunchMenuPanel() {
             ))}
           </div>
         </div>
-
-        <article className="menu-lunch-block menu-lunch-dessert">
-          <p className="menu-lunch-label">Dessert</p>
-          <div className="flex items-baseline justify-between gap-3">
-            <p className="font-display text-lg text-charcoal">{week.dessert.name}</p>
-            <span className="menu-lunch-price font-display text-terracotta">
-              <span className="menu-price-currency">CHF</span> {week.dessert.price}
-            </span>
-          </div>
-        </article>
       </div>
     </div>
   )
