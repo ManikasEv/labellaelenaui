@@ -6,23 +6,21 @@ import { isWeekdayClosed } from './openingHours'
  */
 export const lunchMenuWeeks = [
   {
-    id: '2026-w30',
-    validFrom: '2026-07-20',
-    validUntil: '2026-07-26',
-    label: 'Diese Woche · 20. – 26. Juli 2026',
+    id: '2026-w34',
+    validFrom: '2026-08-24',
+    validUntil: '2026-08-30',
+    label: 'Diese Woche · 24. – 30. August 2026',
     starter: {
-      name: 'Gemischter Salat oder Suppe',
+      name: 'Salat oder Suppe',
     },
     mains: [
       {
-        name: 'Poulet Cordon Bleu',
-        description: 'Mit Kartoffeln oder Pommes',
+        name: 'Poulet Schnitzel mit Pommes',
         price: '22.50',
       },
       {
-        name: 'Zucchini Parmigiana',
+        name: 'Rigatoni mit Pesto',
         price: '19.50',
-        tags: ['vegan'],
       },
     ],
     dessert: {

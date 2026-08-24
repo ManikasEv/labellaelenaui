@@ -13,7 +13,7 @@ const tagAbbrev = {
 const topSections = [
   { id: 'karte', title: 'Speisekarte' },
   { id: 'sommer', title: 'Sommer-Menü', badge: 'Saison' },
-  { id: 'tages', title: 'Tagesmenü', badge: 'Diese Woche' },
+  { id: 'tages', title: 'Mittagsmenü', badge: 'Diese Woche' },
 ]
 
 function MenuRow({ item }) {
@@ -92,7 +92,7 @@ function LunchMenuPanel() {
       <div className="menu-feature-header">
         <div>
           <p className="menu-feature-eyebrow">Mittagsservice · 11:30 – 14:30</p>
-          <h4 className="font-display text-2xl text-charcoal">Tagesmenü</h4>
+          <h4 className="font-display text-2xl text-charcoal">Mittagsmenü</h4>
         </div>
         <span className="menu-feature-badge">{week.label}</span>
       </div>
