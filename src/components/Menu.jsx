@@ -13,7 +13,7 @@ const tagAbbrev = {
 const topSections = [
   { id: 'karte', title: 'Speisekarte' },
   { id: 'sommer', title: 'Sommer-Menü', badge: 'Saison' },
-  { id: 'tages', title: 'Mittagsmenü', badge: 'Diese Woche' },
+  { id: 'tages', title: 'Mittagsmenü' },
 ]
 
 function MenuRow({ item }) {
@@ -65,13 +65,12 @@ function MenuRow({ item }) {
 }
 
 function LunchMenuPanel() {
-  const { closed, week, dateLabel } = getLunchMenuForDate()
+  const { closed, week } = getLunchMenuForDate()
 
   if (closed) {
     return (
       <div className="menu-feature-card py-10 text-center">
-        <p className="font-display text-xl text-charcoal/70">{dateLabel}</p>
-        <p className="mt-3 text-charcoal/55">Heute haben wir geschlossen.</p>
+        <p className="text-charcoal/55">Heute haben wir geschlossen.</p>
       </div>
     )
   }
@@ -79,8 +78,7 @@ function LunchMenuPanel() {
   if (!week) {
     return (
       <div className="menu-feature-card py-10 text-center">
-        <p className="font-display text-lg text-charcoal/70">Mittagsmenü</p>
-        <p className="mt-3 text-sm text-charcoal/55">
+        <p className="text-sm text-charcoal/55">
           Das aktuelle Mittagsmenü wird in Kürze veröffentlicht.
         </p>
       </div>
@@ -89,18 +87,6 @@ function LunchMenuPanel() {
 
   return (
     <div className="menu-feature-card">
-      <div className="menu-feature-header">
-        <div>
-          <p className="menu-feature-eyebrow">Mittagsservice · 11:30 – 14:30</p>
-          <h4 className="font-display text-2xl text-charcoal">Mittagsmenü</h4>
-        </div>
-        <span className="menu-feature-badge">{week.label}</span>
-      </div>
-
-      <p className="menu-feature-intro">
-        Jede Woche neue Gerichte — Vorspeise und Hauptgericht zur Auswahl.
-      </p>
-
       <div className="menu-lunch-grid">
         <article className="menu-lunch-block">
           <p className="menu-lunch-label">Vorspeise</p>

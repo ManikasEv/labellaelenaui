@@ -6,20 +6,19 @@ import { isWeekdayClosed } from './openingHours'
  */
 export const lunchMenuWeeks = [
   {
-    id: '2026-w34',
-    validFrom: '2026-08-24',
-    validUntil: '2026-08-30',
-    label: 'Diese Woche · 24. – 30. August 2026',
+    id: '2026-w35',
+    validFrom: '2026-08-30',
+    validUntil: '2026-09-06',
     starter: {
       name: 'Salat oder Suppe',
     },
     mains: [
       {
-        name: 'Poulet Schnitzel mit Pommes',
+        name: 'Schweinekotelett mit Bratkartoffeln',
         price: '22.50',
       },
       {
-        name: 'Rigatoni mit Pesto',
+        name: 'Cremiges Wirsing Risotto mit Parmesan',
         price: '19.50',
       },
     ],
