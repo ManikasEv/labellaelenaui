@@ -2,23 +2,60 @@ import { isWeekdayClosed } from './openingHours'
 
 /**
  * Wöchentliches Mittagsmenü — neue Woche einfach oben eintragen.
- * validFrom / validUntil: ISO-Datum (YYYY-MM-DD), validUntil optional (offen).
+ * validFrom / validUntil: ISO-Datum (YYYY-MM-DD).
+ * Gültig ab 00:00 Ortszeit am validFrom-Tag bis einschliesslich validUntil.
  */
 export const lunchMenuWeeks = [
   {
-    id: '2026-w35',
-    validFrom: '2026-08-30',
-    validUntil: '2026-09-06',
+    id: '2026-w36',
+    validFrom: '2026-09-07',
+    validUntil: '2026-09-13',
     starter: {
       name: 'Salat oder Suppe',
     },
     mains: [
       {
-        name: 'Schweinekotelett mit Bratkartoffeln',
+        name: 'Paniertes Schweinesteak mit Ofenkartoffeln',
         price: '22.50',
       },
       {
-        name: 'Cremiges Wirsing Risotto mit Parmesan',
+        name: 'Rigatoni mit Pilzen, Erbsen und Cherry-Tomaten',
+        price: '19.50',
+      },
+    ],
+  },
+  {
+    id: '2026-w37',
+    validFrom: '2026-09-14',
+    validUntil: '2026-09-20',
+    starter: {
+      name: 'Salat oder Suppe',
+    },
+    mains: [
+      {
+        name: 'Lachs in Zitronensauce und Gemüse',
+        price: '22.50',
+      },
+      {
+        name: 'Spaghetti aglio olio e peperoncino',
+        price: '19.50',
+      },
+    ],
+  },
+  {
+    id: '2026-w38',
+    validFrom: '2026-09-21',
+    validUntil: '2026-09-27',
+    starter: {
+      name: 'Salat oder Suppe',
+    },
+    mains: [
+      {
+        name: 'Spareribs mit Pommes',
+        price: '22.50',
+      },
+      {
+        name: 'Risotto mit Gemüse',
         price: '19.50',
       },
     ],
@@ -35,16 +72,14 @@ function toLocalDateStr(date) {
 export function getActiveLunchWeek(date = new Date()) {
   const today = toLocalDateStr(date)
 
-  const current = lunchMenuWeeks.find((week) => {
-    if (today < week.validFrom) return false
-    if (week.validUntil && today > week.validUntil) return false
-    return true
-  })
-
-  if (current) return current
-
-  // Show the next upcoming week if none is active yet
-  return lunchMenuWeeks.find((week) => today < week.validFrom) ?? null
+  // Matches from 00:00 local on validFrom through the end of validUntil.
+  return (
+    lunchMenuWeeks.find((week) => {
+      if (today < week.validFrom) return false
+      if (week.validUntil && today > week.validUntil) return false
+      return true
+    }) ?? null
+  )
 }
 
 export function getLunchMenuForDate(date = new Date()) {
