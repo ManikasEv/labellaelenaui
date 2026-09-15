@@ -1,50 +1,37 @@
 export const summerMenuMeta = {
-  title: 'Sommer-Menü',
-  subtitle: 'Saisonale Gerichte — frisch, leicht und mediterran',
-  note: 'Alle mit 🌿 gekennzeichneten Gerichte sind rein pflanzlich vegan.',
+  title: 'Herbstliche Spezialitäten',
+  subtitle: 'Saisonale Herbstgerichte — würzig, herzhaft und mediterran',
+  note: '',
 }
 
 export const summerMenuItems = [
   {
-    name: 'Chicken Caesar Salad',
-    price: '26.00',
+    name: 'Zuppa di Zucca',
+    description: 'Kürbiscremesuppe verfeinert mit Kürbiskernöl',
+    price: '11.50',
   },
   {
-    name: 'Rinds Tatar',
-    prices: [
-      { label: 'Klein', price: '24.50' },
-      { label: 'Gross', price: '36.00' },
-    ],
-  },
-  {
-    name: 'Crevetten Avocado Salat',
-    description: 'Mit Hausdressing',
-    price: '32.00',
-  },
-  {
-    name: 'Bayerischer Wurst-Käse-Salat',
-    price: '21.50',
-  },
-  {
-    name: 'Souvlaki Schweinespiesse',
-    description: 'Mit Kartoffelsalat, Tzatziki und Pita',
-    price: '29.50',
-  },
-  {
-    name: 'Tagliata vom Rind',
-    description: 'Mit Radicchio und Scaglie di Parmigiano',
-    price: '46.00',
-  },
-  {
-    name: 'Nido di Spigola (Wolfsbarsch)',
+    name: 'Vitello Tonnato',
     description:
-      'Mit Spinaci e Grana Padano, gegrilltem Gemüse und Weinsosse',
+      'Hauchdünn aufgeschnittene Scheiben von der rosa gegarten Kalbsnuss, mit hausgemachter cremiger Thunfischsauce und Kapern',
+    price: '24.00',
+  },
+  {
+    name: 'Rinds Entrecôte an Eierschwämmli',
+    description:
+      'Am Stück rosa gebratenes Entrecôte, verfeinert mit einer samtigen Reduktion vom goldgelben Eierschwämmli, serviert mit Tagliatelle und Gemüse',
     price: '49.50',
   },
   {
-    name: 'Calamari in umido',
+    name: 'Scaloppine ai Porcini',
     description:
-      'Tintenfischringe in aromatischer Sauce aus Tomaten, feinem Weisswein, Knoblauch und frischen Kräutern, vollendet mit einem Hauch von Chilli und Oliven. Serviert mit knusprigem Landbrot.',
-    price: '38.00',
+      'In Butter kurzgebratene Scaloppine an einer samtigen Emulsion von edlen Steinpilzen. Dazu Risotto und Wirsing',
+    price: '46.50',
+  },
+  {
+    name: 'Pesce Spada alla Griglia',
+    description:
+      'Frischer Schwertfisch vom Grill mit Risotto al Champagne und Melanzane a Funghetto (feine Auberginenwürfel in Olivenöl sautiert mit saftigen Tomaten, Knoblauch und Basilikum sanft geschmort)',
+    price: '39.00',
   },
 ]

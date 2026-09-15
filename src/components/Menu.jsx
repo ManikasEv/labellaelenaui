@@ -12,7 +12,7 @@ const tagAbbrev = {
 
 const topSections = [
   { id: 'karte', title: 'Speisekarte' },
-  { id: 'sommer', title: 'Sommer-Menü', badge: 'Saison' },
+  { id: 'sommer', title: 'Herbst-Menü', badge: 'Saison' },
   { id: 'tages', title: 'Mittagsmenü' },
 ]
 
@@ -127,7 +127,7 @@ function SummerMenuPanel() {
           <p className="menu-feature-eyebrow">La Bella Elena · Hohle Gasse</p>
           <h4 className="font-display text-3xl text-olive">{summerMenuMeta.title}</h4>
         </div>
-        <span className="menu-feature-badge menu-feature-badge-summer">Sommer 2026</span>
+        <span className="menu-feature-badge menu-feature-badge-summer">Herbst 2026</span>
       </div>
 
       <p className="menu-feature-intro">{summerMenuMeta.subtitle}</p>
@@ -223,7 +223,7 @@ export default function Menu() {
           </p>
           <h2 className="font-display mb-3 text-4xl text-charcoal lg:text-5xl">Menù</h2>
           <p className="mx-auto max-w-lg text-sm text-charcoal/55">
-            Mittagsservice, Sommer-Spezialitäten und unsere klassische griechisch-italienische Karte.
+            Mittagsservice, Herbst-Spezialitäten und unsere klassische griechisch-italienische Karte.
           </p>
         </div>
 
