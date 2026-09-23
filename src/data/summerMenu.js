@@ -1,37 +1,37 @@
 export const summerMenuMeta = {
-  title: 'Herbstliche Spezialitäten',
-  subtitle: 'Saisonale Herbstgerichte — würzig, herzhaft und mediterran',
+  title: 'Wildkarte',
+  subtitle: 'Saisonale Wildgerichte — herzhaft und herbstlich',
   note: '',
 }
 
 export const summerMenuItems = [
   {
-    name: 'Zuppa di Zucca',
-    description: 'Kürbiscremesuppe verfeinert mit Kürbiskernöl',
-    price: '11.50',
+    name: 'Rosa gebratenes Hirschkotelett',
+    description:
+      'An einer feinen Wild-Waldbeerensauce, serviert mit hausgemachten Spätzli, geschmortem Rotkraut, Grünkohl, karamellisierten Maroni und pochierter Rotweinbirne',
+    prices: [
+      { label: 'Klein', price: '47.00' },
+      { label: 'Gross', price: '53.00' },
+    ],
   },
   {
-    name: 'Vitello Tonnato',
+    name: 'Rosa gebratenes Rehschnitzel',
     description:
-      'Hauchdünn aufgeschnittene Scheiben von der rosa gegarten Kalbsnuss, mit hausgemachter cremiger Thunfischsauce und Kapern',
-    price: '24.00',
+      'An einer feinen Wild-Waldbeerensauce, serviert mit hausgemachten Spätzli, geschmortem Rotkraut, Grünkohl, karamellisierten Maroni und pochierter Herbstbirne',
+    prices: [
+      { label: 'Klein', price: '45.00' },
+      { label: 'Gross', price: '51.00' },
+    ],
   },
   {
-    name: 'Rinds Entrecôte an Eierschwämmli',
-    description:
-      'Am Stück rosa gebratenes Entrecôte, verfeinert mit einer samtigen Reduktion vom goldgelben Eierschwämmli, serviert mit Tagliatelle und Gemüse',
-    price: '49.50',
-  },
-  {
-    name: 'Scaloppine ai Porcini',
-    description:
-      'In Butter kurzgebratene Scaloppine an einer samtigen Emulsion von edlen Steinpilzen. Dazu Risotto und Wirsing',
-    price: '46.50',
-  },
-  {
-    name: 'Pesce Spada alla Griglia',
-    description:
-      'Frischer Schwertfisch vom Grill mit Risotto al Champagne und Melanzane a Funghetto (feine Auberginenwürfel in Olivenöl sautiert mit saftigen Tomaten, Knoblauch und Basilikum sanft geschmort)',
+    name: 'Zart geschmortes Wildschweingulasch',
+    description: 'Serviert mit hausgemachten Spätzli und traditionellem Apfel-Rotkraut',
     price: '39.00',
+  },
+  {
+    name: 'Vegetarischer Herbstteller',
+    description:
+      'Sautierte Eierschwämmli an feiner Waldbeerensauce, serviert mit hausgemachten Spätzli, geschmortem Rotkraut, Grünkohl, karamellisierten Maroni und pochierter Herbstbirne',
+    price: '36.00',
   },
 ]

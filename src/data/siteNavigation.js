@@ -35,7 +35,7 @@ export const sectionMeta = {
   '/menu': {
     title: 'Menü — La Bella Elena, Griechisch-Italienisches Restaurant Immensee',
     description:
-      'Speisekarte, Herbst-Menü und wöchentliches Mittagsmenü von La Bella Elena an der Hohlen Gasse in Immensee.',
+      'Speisekarte, Wildkarte und wöchentliches Mittagsmenü von La Bella Elena an der Hohlen Gasse in Immensee.',
   },
   '/menu-heute': {
     title: 'Heute im Angebot — La Bella Elena, Immensee',
