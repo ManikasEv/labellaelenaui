@@ -7,55 +7,60 @@ import { isWeekdayClosed } from './openingHours'
  */
 export const lunchMenuWeeks = [
   {
-    id: '2026-w36',
-    validFrom: '2026-09-07',
-    validUntil: '2026-09-13',
+    id: '2026-w39',
+    validFrom: '2026-09-28',
+    validUntil: '2026-10-04',
     starter: {
-      name: 'Salat oder Suppe',
+      name: 'Suppe oder Salat',
     },
     mains: [
       {
-        name: 'Paniertes Schweinesteak mit Ofenkartoffeln',
+        name: 'Rindsbratwurst 200 gr. mit Rösti und Zwiebelsauce',
+        description: 'Metzgerei Zgraggen Fabio & Beni',
         price: '22.50',
       },
       {
-        name: 'Rigatoni mit Pilzen, Erbsen und Cherry-Tomaten',
+        name: 'Rigatoni alla boscaiola',
+        description: 'Champignons, Erbsen, Schinken, Rahm und Tomaten',
         price: '19.50',
       },
     ],
   },
   {
-    id: '2026-w37',
-    validFrom: '2026-09-14',
-    validUntil: '2026-09-20',
+    id: '2026-w40',
+    validFrom: '2026-10-05',
+    validUntil: '2026-10-11',
     starter: {
-      name: 'Salat oder Suppe',
+      name: 'Suppe oder Salat',
     },
     mains: [
       {
-        name: 'Lachs in Zitronensauce und Gemüse',
+        name: 'Scaloppine di pollo ai funghi mit Tagliatelle',
+        description: 'Pouletschnitzel mit Champignons und Tagliatelle',
         price: '22.50',
       },
       {
-        name: 'Spaghetti aglio olio e peperoncino',
+        name: 'Gnocchi alla sorrentina',
+        description: 'Mit Tomate und Mozzarella',
         price: '19.50',
       },
     ],
   },
   {
-    id: '2026-w38',
-    validFrom: '2026-09-21',
-    validUntil: '2026-09-27',
+    id: '2026-w41',
+    validFrom: '2026-10-12',
+    validUntil: '2026-10-18',
     starter: {
-      name: 'Salat oder Suppe',
+      name: 'Suppe oder Salat',
     },
     mains: [
       {
-        name: 'Spareribs mit Pommes',
+        name: 'Scaloppine di maiale',
+        description: 'Schweineschnitzel mit Weinsauce und Kartoffeln',
         price: '22.50',
       },
       {
-        name: 'Risotto mit Gemüse',
+        name: 'Spaghetti alla bolognese',
         price: '19.50',
       },
     ],
