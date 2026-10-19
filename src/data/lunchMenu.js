@@ -7,60 +7,57 @@ import { isWeekdayClosed } from './openingHours'
  */
 export const lunchMenuWeeks = [
   {
-    id: '2026-w39',
-    validFrom: '2026-09-28',
-    validUntil: '2026-10-04',
+    id: '2026-w43',
+    validFrom: '2026-10-19',
+    validUntil: '2026-10-25',
     starter: {
       name: 'Suppe oder Salat',
     },
     mains: [
       {
-        name: 'Rindsbratwurst 200 gr. mit Rösti und Zwiebelsauce',
-        description: 'Metzgerei Zgraggen Fabio & Beni',
+        name: 'Würzig-italienische Salsiccia',
+        description: 'Mit Pommes frites und hausgemachter Bratensauce',
         price: '22.50',
       },
       {
-        name: 'Rigatoni alla boscaiola',
-        description: 'Champignons, Erbsen, Schinken, Rahm und Tomaten',
+        name: 'Mousaka vegetarisch',
         price: '19.50',
       },
     ],
   },
   {
-    id: '2026-w40',
-    validFrom: '2026-10-05',
-    validUntil: '2026-10-11',
+    id: '2026-w44',
+    validFrom: '2026-10-26',
+    validUntil: '2026-11-01',
     starter: {
       name: 'Suppe oder Salat',
     },
     mains: [
       {
-        name: 'Scaloppine di pollo ai funghi mit Tagliatelle',
-        description: 'Pouletschnitzel mit Champignons und Tagliatelle',
+        name: 'Hausgemachte Hacktätschli',
+        description: 'Verfeinert mit Cheddar, serviert auf luftigem Kartoffelpüree',
         price: '22.50',
       },
       {
-        name: 'Gnocchi alla sorrentina',
-        description: 'Mit Tomate und Mozzarella',
+        name: 'Spaghetti pomodoro',
         price: '19.50',
       },
     ],
   },
   {
-    id: '2026-w41',
-    validFrom: '2026-10-12',
-    validUntil: '2026-10-18',
+    id: '2026-w45',
+    validFrom: '2026-11-02',
+    validUntil: '2026-11-08',
     starter: {
       name: 'Suppe oder Salat',
     },
     mains: [
       {
-        name: 'Scaloppine di maiale',
-        description: 'Schweineschnitzel mit Weinsauce und Kartoffeln',
+        name: 'Ossobuco mit Risotto',
         price: '22.50',
       },
       {
-        name: 'Spaghetti alla bolognese',
+        name: 'Rigatoni quattro formaggi',
         price: '19.50',
       },
     ],

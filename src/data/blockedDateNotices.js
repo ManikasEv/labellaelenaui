@@ -1,5 +1,29 @@
 const blockedDateNotices = [
   {
+    date: '2026-10-06',
+    message:
+      'Dienstag, 6. Oktober ist diese Woche geschlossen. Bitte wählen Sie ein anderes Datum.',
+    visibleUntil: '2026-10-10',
+  },
+  {
+    date: '2026-10-07',
+    message:
+      'Mittwoch, 7. Oktober ist diese Woche geschlossen. Bitte wählen Sie ein anderes Datum.',
+    visibleUntil: '2026-10-10',
+  },
+  {
+    date: '2026-10-08',
+    message:
+      'Donnerstag, 8. Oktober ist diese Woche geschlossen. Bitte wählen Sie ein anderes Datum.',
+    visibleUntil: '2026-10-10',
+  },
+  {
+    date: '2026-10-09',
+    message:
+      'Freitag, 9. Oktober ist diese Woche geschlossen. Bitte wählen Sie ein anderes Datum.',
+    visibleUntil: '2026-10-10',
+  },
+  {
     date: '2026-11-21',
     message:
       'Samstag, 21. November ist ausgebucht (Gruppenreservation). Bitte wählen Sie ein anderes Datum.',
