@@ -115,9 +115,9 @@ export default function Navbar() {
           scrolled ? 'site-header--scrolled' : ''
         } ${isHidden ? 'site-header--hidden' : ''}`}
       >
-        <nav className="mx-auto grid w-full max-w-[1400px] grid-cols-[1fr_auto_1fr] items-center px-5 py-3 sm:px-8 sm:py-4 lg:px-12">
-          {/* Left: burger (mobile) / section links (desktop) */}
-          <div className="flex items-center">
+        <nav className="relative flex w-full items-center justify-between gap-4 px-5 py-3 sm:px-7 sm:py-4 lg:px-10 xl:px-12">
+          {/* Left: burger (mobile) / section links (desktop) — flush to the edge */}
+          <div className="relative z-[81] flex min-w-0 shrink items-center">
             <button
               type="button"
               className="relative z-[80] -ml-2 flex h-11 w-11 items-center justify-center md:hidden"
@@ -146,7 +146,7 @@ export default function Navbar() {
               </span>
             </button>
 
-            <ul className="hidden items-center gap-7 md:flex">
+            <ul className="hidden items-center gap-5 lg:gap-6 xl:gap-7 md:flex">
               {navLinks.map((link) => (
                 <li key={link.to}>
                   <Link to={link.to} className={desktopLinkClass}>
@@ -157,11 +157,11 @@ export default function Navbar() {
             </ul>
           </div>
 
-          {/* Centre: two-line wordmark */}
+          {/* Centre: two-line wordmark — truly centred in the bar */}
           <Link
             to="/"
             onClick={closeMenu}
-            className={`group flex flex-col items-center justify-self-center text-center transition-colors duration-300 ${ink}`}
+            className={`group pointer-events-auto absolute top-1/2 left-1/2 z-[80] flex -translate-x-1/2 -translate-y-1/2 flex-col items-center text-center transition-colors duration-300 ${ink}`}
           >
             <span className="display text-[1.3rem] leading-none whitespace-nowrap transition-colors group-hover:text-terracotta sm:text-[1.7rem]">
               La Bella Elena
@@ -171,8 +171,8 @@ export default function Navbar() {
             </span>
           </Link>
 
-          {/* Right: round reservation button */}
-          <div className="flex items-center justify-end">
+          {/* Right: reservation button — flush to the edge */}
+          <div className="relative z-[81] flex shrink-0 items-center justify-end">
             <Link
               to="/reservierung"
               className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-terracotta text-[0.7rem] font-semibold tracking-[0.14em] whitespace-nowrap text-white uppercase transition-colors duration-200 hover:bg-terracotta-dark sm:h-12 sm:w-auto sm:px-6"
