@@ -1,26 +1,55 @@
 import { Link } from 'react-router-dom'
 import { restaurantPhone, whatsappUrl } from '../data/location'
-import { topLevelLinks } from '../data/siteNavigation'
-import CopyEmail from './CopyEmail'
+import food1 from '../assets/food1.jpg'
+import specialfood from '../assets/specialfood.jpg'
+import food5 from '../assets/food5.jpg'
+import place5 from '../assets/place5.jpg'
+import outdoor1 from '../assets/outdoor1.jpg'
 
-const menuShortcuts = [
-  { label: 'Speisekarte', section: 'karte' },
-  { label: 'Monatsspezialitäten', section: 'sommer' },
-  { label: 'Mittagsmenü', section: 'tages' },
+const shortcuts = [
+  {
+    key: 'karte',
+    label: 'Speisekarte',
+    to: '/menu',
+    state: { menuSection: 'karte' },
+    image: food1,
+    alt: 'Lamm mit Ofenkartoffeln und Pommes',
+  },
+  {
+    key: 'sommer',
+    label: 'Monatsspezialitäten',
+    to: '/menu',
+    state: { menuSection: 'sommer' },
+    image: specialfood,
+    alt: 'Lammkoteletts mit Pasta und Kartoffeln',
+  },
+  {
+    key: 'tages',
+    label: 'Mittagsmenü',
+    to: '/menu',
+    state: { menuSection: 'tages' },
+    image: food5,
+    alt: 'Frisch aus unserer Küche',
+  },
+  {
+    key: 'reservierung',
+    label: 'Reservierung',
+    to: '/reservierung',
+    image: place5,
+    alt: 'Innenraum des Restaurants',
+  },
+  {
+    key: 'standort',
+    label: 'Standort',
+    to: '/standort',
+    image: outdoor1,
+    alt: 'Terrasse unter dem Baumdach',
+  },
 ]
-
-function Chevron() {
-  return (
-    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2} aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-    </svg>
-  )
-}
 
 export default function Hero() {
   return (
     <>
-      {/* Full-viewport hero: photo fills the screen, shaded so the text reads */}
       <section className="hero">
         <div className="hero-media" aria-hidden="true">
           <img
@@ -67,50 +96,29 @@ export default function Hero() {
         <span className="sr-only">
           La Bella Elena — Restaurant an der Hohlen Gasse in Immensee mit Blick auf die Berge
         </span>
-
       </section>
 
-      {/* Contact shortcuts + quick links — directly under the hero */}
-      <section className="bg-white">
-        <div className="flex justify-center gap-3 pt-10 sm:pt-12">
-          <Link to="/reservierung" className="icon-circle" aria-label="Tisch reservieren">
-            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6} aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M8 3v3m8-3v3M4 9h16M5 5h14a1 1 0 011 1v13a1 1 0 01-1 1H5a1 1 0 01-1-1V6a1 1 0 011-1z" />
-              <path strokeLinecap="round" strokeLinejoin="round" d="M8 13h3v3H8z" />
-            </svg>
+      <section className="dest-strip" role="navigation" aria-label="Schnelleinstiege">
+        {shortcuts.map((item, index) => (
+          <Link
+            key={item.key}
+            to={item.to}
+            state={item.state}
+            className="dest-tile"
+          >
+            <span className="dest-tile__media" aria-hidden="true">
+              <img src={item.image} alt="" loading="lazy" decoding="async" />
+            </span>
+            <span className="dest-tile__shade" aria-hidden="true" />
+            <span className="dest-tile__index">{String(index + 1).padStart(2, '0')}</span>
+            <span className="dest-tile__label">{item.label}</span>
+            <span className="dest-tile__go" aria-hidden="true">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.7}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </span>
           </Link>
-          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="icon-circle" aria-label={`WhatsApp · ${restaurantPhone}`}>
-            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6} aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3 5.5A2.5 2.5 0 015.5 3h2.1a1 1 0 01.95.68l1.1 3.3a1 1 0 01-.25 1.03L8.1 9.3a12.5 12.5 0 006.6 6.6l1.3-1.3a1 1 0 011.03-.25l3.3 1.1a1 1 0 01.68.95v2.1A2.5 2.5 0 0118.5 21 15.5 15.5 0 013 5.5z" />
-            </svg>
-          </a>
-          <CopyEmail className="icon-circle">
-            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6} aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3.5 6.5h17v11h-17z M3.5 7l8.5 6 8.5-6" />
-            </svg>
-          </CopyEmail>
-        </div>
-
-        <div className="mx-auto max-w-5xl px-5 pt-7 pb-8 sm:pt-8 sm:pb-10">
-          <div className="flex flex-wrap justify-center gap-2.5">
-            {menuShortcuts.map((item) => (
-              <Link key={item.section} to="/menu" state={{ menuSection: item.section }} className="pill-link">
-                {item.label}
-                <Chevron />
-              </Link>
-            ))}
-            {topLevelLinks.map((link) => (
-              <Link key={link.path} to={link.path} className="pill-link">
-                {link.label}
-                <Chevron />
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        <Link to="/uber-uns" aria-label="Weiter scrollen" className="sr-only">
-          Weiter scrollen
-        </Link>
+        ))}
       </section>
     </>
   )
