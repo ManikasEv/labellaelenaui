@@ -4,46 +4,41 @@ const easeOut = [0.22, 1, 0.36, 1]
 
 const variants = {
   hero: {
-    hidden: { opacity: 0, y: 16 },
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      y: 0,
-      transition: { duration: 0.85, ease: easeOut },
+      transition: { duration: 1, ease: easeOut },
     },
   },
   about: {
-    hidden: { opacity: 0, x: -72, rotate: -1 },
+    hidden: { opacity: 0, y: 40 },
     visible: {
       opacity: 1,
-      x: 0,
-      rotate: 0,
-      transition: { duration: 0.95, ease: easeOut },
+      y: 0,
+      transition: { duration: 0.9, ease: easeOut },
     },
   },
   gallery: {
-    hidden: { opacity: 0, y: 48, scale: 0.88 },
+    hidden: { opacity: 0, y: 48 },
     visible: {
       opacity: 1,
       y: 0,
-      scale: 1,
-      transition: { type: 'spring', stiffness: 62, damping: 16, mass: 0.9 },
+      transition: { duration: 0.9, ease: easeOut },
     },
   },
   menu: {
-    hidden: { opacity: 0, y: 80, skewY: 3 },
+    hidden: { opacity: 0, y: 40 },
     visible: {
       opacity: 1,
       y: 0,
-      skewY: 0,
-      transition: { duration: 0.85, ease: easeOut },
+      transition: { duration: 0.9, ease: easeOut },
     },
   },
   contact: {
-    hidden: { opacity: 0, x: 72, scale: 0.97 },
+    hidden: { opacity: 0, y: 40 },
     visible: {
       opacity: 1,
-      x: 0,
-      scale: 1,
+      y: 0,
       transition: { duration: 0.9, ease: easeOut },
     },
   },

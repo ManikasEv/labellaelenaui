@@ -37,6 +37,7 @@ const linkMotion = (index, reduced) => ({
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
+  const [hidden, setHidden] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const location = useLocation()
   const reducedMotion = useReducedMotion()
@@ -46,11 +47,36 @@ export default function Navbar() {
   const isImpressumPage = location.pathname === '/impressum'
   const isSubPage = isReservationPage || isStandortPage || isImpressumPage || isSectionPage
 
+  // Scroll-aware header: transparent at the top, hides when scrolling down,
+  // slides back in as soon as the visitor scrolls up.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
+    let lastY = window.scrollY
+    let ticking = false
+
+    const update = () => {
+      const y = window.scrollY
+      const delta = y - lastY
+      setScrolled(y > 24)
+      if (y < 120) {
+        setHidden(false)
+      } else if (Math.abs(delta) > 6) {
+        setHidden(delta > 0)
+      }
+      lastY = y
+      ticking = false
+    }
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true
+        window.requestAnimationFrame(update)
+      }
+    }
+
+    update()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  }, [location.pathname])
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
@@ -66,88 +92,98 @@ export default function Navbar() {
   }, [location.pathname])
 
   const closeMenu = () => setMenuOpen(false)
-  const solid = scrolled || menuOpen || isSubPage
+  const isHidden = hidden && !menuOpen
+  void isSubPage
 
-  const desktopLinkClass = `text-sm font-medium tracking-wide transition-colors duration-200 ${
-    solid
-      ? 'text-charcoal/80 hover:text-terracotta'
-      : 'text-cream/90 hover:text-gold'
-  }`
+  // Over the full-screen hero the bar is transparent with white type;
+  // it turns white as soon as the visitor scrolls or opens the menu.
+  const isHome = location.pathname === '/'
+  const onHero = isHome && !scrolled && !menuOpen
+  const ink = onHero ? 'text-white' : 'text-charcoal'
+  const inkSoft = onHero ? 'text-white/80 hover:text-white' : 'text-charcoal/75 hover:text-charcoal'
+  const inkMuted = onHero ? 'text-white/65' : 'text-charcoal/55'
+  const barTone = onHero ? 'bg-white' : 'bg-charcoal'
+
+  const desktopLinkClass = `nav-link text-[0.9rem] whitespace-nowrap transition-colors duration-200 ${inkSoft}`
+
+  const barClass = `h-px w-6 ${barTone} transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]`
 
   return (
     <>
       <header
-        className={`fixed top-0 right-0 left-0 z-50 transition-[background-color,box-shadow] duration-300 md:backdrop-blur-md ${
-          menuOpen
-            ? 'bg-cream shadow-sm max-md:backdrop-blur-none'
-            : solid
-              ? 'bg-cream/95 shadow-sm max-md:bg-cream max-md:backdrop-blur-none'
-              : 'bg-transparent max-md:backdrop-blur-none'
-        }`}
+        className={`site-header fixed inset-x-0 top-0 z-[80] ${onHero ? 'site-header--transparent' : ''} ${
+          scrolled ? 'site-header--scrolled' : ''
+        } ${isHidden ? 'site-header--hidden' : ''}`}
       >
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5 sm:px-6 sm:py-4 lg:px-8">
+        <nav className="mx-auto grid w-full max-w-[1400px] grid-cols-[1fr_auto_1fr] items-center px-5 py-3 sm:px-8 sm:py-4 lg:px-12">
+          {/* Left: burger (mobile) / section links (desktop) */}
+          <div className="flex items-center">
+            <button
+              type="button"
+              className="relative z-[80] -ml-2 flex h-11 w-11 items-center justify-center md:hidden"
+              onClick={() => setMenuOpen((open) => !open)}
+              aria-label={menuOpen ? 'Menü schliessen' : 'Menü öffnen'}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-nav-panel"
+            >
+              <span className="sr-only">{menuOpen ? 'Menü schliessen' : 'Menü öffnen'}</span>
+              <span className="relative block h-4 w-6">
+                <span
+                  className={`absolute top-0 left-0 block origin-center ${barClass} ${
+                    menuOpen ? 'translate-y-[7.5px] rotate-45' : ''
+                  }`}
+                />
+                <span
+                  className={`absolute top-[7.5px] left-0 block h-px w-6 ${barTone} transition-opacity duration-200 ${
+                    menuOpen ? 'opacity-0' : 'opacity-100'
+                  }`}
+                />
+                <span
+                  className={`absolute top-[15px] left-0 block origin-center ${barClass} ${
+                    menuOpen ? '-translate-y-[7.5px] -rotate-45' : ''
+                  }`}
+                />
+              </span>
+            </button>
+
+            <ul className="hidden items-center gap-7 md:flex">
+              {navLinks.map((link) => (
+                <li key={link.to}>
+                  <Link to={link.to} className={desktopLinkClass}>
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Centre: two-line wordmark */}
           <Link
             to="/"
             onClick={closeMenu}
-            className={`font-display max-w-[58%] truncate text-lg tracking-wide transition-colors duration-200 sm:max-w-none sm:text-xl md:text-2xl ${
-              solid
-                ? 'text-charcoal hover:text-terracotta'
-                : 'text-cream hover:text-gold'
-            }`}
+            className={`group flex flex-col items-center justify-self-center text-center transition-colors duration-300 ${ink}`}
           >
-            La Bella Elena
+            <span className="display text-[1.3rem] leading-none whitespace-nowrap transition-colors group-hover:text-terracotta sm:text-[1.7rem]">
+              La Bella Elena
+            </span>
+            <span className={`mt-1.5 hidden text-[0.52rem] font-medium tracking-[0.32em] uppercase transition-colors duration-300 sm:block ${inkMuted}`}>
+              Griechisch-Italienisches Restaurant
+            </span>
           </Link>
 
-          <ul className="hidden items-center gap-8 md:flex">
-            {navLinks.map((link) => (
-              <li key={link.to}>
-                <Link to={link.to} className={desktopLinkClass}>
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          <div className="hidden md:block">
+          {/* Right: round reservation button */}
+          <div className="flex items-center justify-end">
             <Link
               to="/reservierung"
-              className={`inline-flex items-center rounded-full px-5 py-2.5 text-sm font-medium transition-colors duration-200 ${
-                solid
-                  ? 'bg-terracotta text-cream hover:bg-terracotta-dark'
-                  : 'border border-cream/40 bg-cream/10 text-cream backdrop-blur-sm hover:border-cream hover:bg-cream/20'
-              }`}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-terracotta text-[0.7rem] font-semibold tracking-[0.14em] whitespace-nowrap text-white uppercase transition-colors duration-200 hover:bg-terracotta-dark sm:h-12 sm:w-auto sm:px-6"
+              aria-label="Tisch reservieren"
             >
-              Tisch reservieren
+              <svg className="h-4 w-4 sm:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8} aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8 3v3m8-3v3M4 9h16M5 5h14a1 1 0 011 1v13a1 1 0 01-1 1H5a1 1 0 01-1-1V6a1 1 0 011-1z" />
+              </svg>
+              <span className="hidden sm:inline">Tisch reservieren</span>
             </Link>
           </div>
-
-          <button
-            type="button"
-            className="relative z-[80] flex h-11 w-11 items-center justify-center rounded-full transition-colors duration-200 md:hidden"
-            onClick={() => setMenuOpen((open) => !open)}
-            aria-label={menuOpen ? 'Menü schliessen' : 'Menü öffnen'}
-            aria-expanded={menuOpen}
-            aria-controls="mobile-nav-panel"
-          >
-            <span className="sr-only">{menuOpen ? 'Menü schliessen' : 'Menü öffnen'}</span>
-            <span className="relative block h-5 w-6">
-              <span
-                className={`absolute top-0 left-0 block h-0.5 w-6 origin-center transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
-                  solid ? 'bg-charcoal' : 'bg-cream'
-                } ${menuOpen ? 'translate-y-[9px] rotate-45' : ''}`}
-              />
-              <span
-                className={`absolute top-[9px] left-0 block h-0.5 w-6 transition-opacity duration-200 ${
-                  solid ? 'bg-charcoal' : 'bg-cream'
-                } ${menuOpen ? 'opacity-0' : 'opacity-100'}`}
-              />
-              <span
-                className={`absolute top-[18px] left-0 block h-0.5 w-6 origin-center transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
-                  solid ? 'bg-charcoal' : 'bg-cream'
-                } ${menuOpen ? '-translate-y-[9px] -rotate-45' : ''}`}
-              />
-            </span>
-          </button>
         </nav>
       </header>
 
@@ -173,31 +209,34 @@ export default function Navbar() {
             />
 
             <motion.div
-              className="mobile-nav-panel absolute inset-x-0 top-0 flex max-h-[100dvh] min-h-[100dvh] flex-col bg-cream shadow-xl"
-              style={{ paddingTop: 'calc(env(safe-area-inset-top, 0px) + 4.75rem)' }}
+              className="mobile-nav-panel absolute inset-x-0 top-0 flex max-h-[100dvh] min-h-[100dvh] flex-col bg-white shadow-xl"
+              style={{ paddingTop: 'calc(env(safe-area-inset-top, 0px) + 5.5rem)' }}
               {...panelMotion}
             >
-              <nav className="flex flex-1 flex-col items-center justify-center gap-2 px-6 pb-[max(2rem,env(safe-area-inset-bottom))]">
+              <nav className="relative flex flex-1 flex-col justify-center gap-1 px-8 pb-[max(2rem,env(safe-area-inset-bottom))]">
                 {navLinks.map((link, index) => (
                   <motion.div key={link.to} {...linkMotion(index, reducedMotion)}>
                     <Link
                       to={link.to}
                       onClick={closeMenu}
-                      className="font-display flex w-full max-w-xs items-center justify-center rounded-2xl px-4 py-3.5 text-center text-2xl text-charcoal transition-colors duration-200 active:bg-olive/5 hover:text-terracotta"
+                      className="display flex w-full items-center justify-between border-b border-charcoal/10 py-4 text-[1.9rem] text-charcoal transition-colors duration-200 hover:text-terracotta active:bg-charcoal/5"
                     >
                       {link.label}
+                      <svg className="h-4 w-4 text-charcoal/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                      </svg>
                     </Link>
                   </motion.div>
                 ))}
 
                 <motion.div
-                  className="mt-5 w-full max-w-xs"
+                  className="mt-8 w-full"
                   {...linkMotion(navLinks.length, reducedMotion)}
                 >
                   <Link
                     to="/reservierung"
                     onClick={closeMenu}
-                    className="flex w-full items-center justify-center rounded-full bg-terracotta px-8 py-3.5 text-base font-medium text-cream shadow-md transition-transform duration-200 active:scale-[0.98] hover:bg-terracotta-dark"
+                    className="btn btn-primary w-full transition-transform duration-200 active:scale-[0.98]"
                   >
                     Tisch reservieren
                   </Link>

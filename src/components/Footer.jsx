@@ -6,28 +6,26 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="bg-charcoal text-cream/70">
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-        <div className="grid gap-12 md:grid-cols-3">
+    <footer className="border-t border-charcoal/10 bg-white text-charcoal">
+      <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-16">
+        <div className="grid gap-10 md:grid-cols-[1.3fr_0.8fr_1fr]">
           <div>
-            <p className="font-display mb-4 text-2xl text-cream">La Bella Elena</p>
-            <p className="text-sm leading-relaxed">
+            <p className="display text-3xl text-charcoal">La Bella Elena</p>
+            <p className="mt-1.5 text-[0.6rem] font-medium tracking-[0.3em] text-charcoal/55 uppercase">
+              Griechisch-Italienisches Restaurant
+            </p>
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-charcoal/70">
               Griechisch-Italienisches Restaurant an der Hohlen Gasse, Artherstrasse 38, 6405
               Immensee.
             </p>
           </div>
 
           <div>
-            <p className="mb-4 text-sm font-medium tracking-wider text-cream uppercase">
-              Navigation
-            </p>
+            <p className="mb-4 text-[0.68rem] font-medium tracking-[0.18em] text-charcoal/45 uppercase">Navigation</p>
             <ul className="space-y-2">
               {allSiteNavLinks.map((link) => (
                 <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    className="text-sm transition-colors hover:text-gold"
-                  >
+                  <Link to={link.path} className="nav-link text-sm text-charcoal/80 transition-colors hover:text-charcoal">
                     {link.label}
                   </Link>
                 </li>
@@ -36,45 +34,30 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="mb-4 text-sm font-medium tracking-wider text-cream uppercase">
-              Kontakt
-            </p>
+            <p className="mb-4 text-[0.68rem] font-medium tracking-[0.18em] text-charcoal/45 uppercase">Kontakt</p>
             <ul className="space-y-2 text-sm">
-              <li>Artherstrasse 38, 6405 Immensee</li>
+              <li className="text-charcoal/80">Artherstrasse 38, 6405 Immensee</li>
               <li>
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="transition-colors hover:text-gold"
-                >
+                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="display text-lg text-charcoal transition-colors hover:text-terracotta">
                   {restaurantPhone}
                 </a>
               </li>
               <li>
-                <a
-                  href={`mailto:${restaurantEmail}`}
-                  className="break-all transition-colors hover:text-gold"
-                >
+                <a href={`mailto:${restaurantEmail}`} className="break-all text-charcoal/80 transition-colors hover:text-terracotta">
                   {restaurantEmail}
                 </a>
               </li>
             </ul>
           </div>
         </div>
+      </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-cream/10 pt-8 sm:flex-row">
-          <p className="text-xs text-cream/40">
-            © {year} Pellekara GmbH · La Bella Elena. Alle Rechte vorbehalten.
-          </p>
-          <div className="flex items-center gap-4">
-            <Link
-              to="/impressum"
-              className="inline-flex items-center rounded-full border border-cream/20 px-4 py-1.5 text-xs font-medium text-cream/70 transition-colors hover:border-gold hover:text-gold"
-            >
-              Impressum
-            </Link>
-          </div>
+      <div className="border-t border-charcoal/10">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-5 py-5 text-xs text-charcoal/55 sm:flex-row sm:px-8">
+          <p>© {year} Pellekara GmbH · La Bella Elena. Alle Rechte vorbehalten.</p>
+          <Link to="/impressum" className="tracking-[0.14em] text-charcoal/70 uppercase transition-colors hover:text-terracotta">
+            Impressum
+          </Link>
         </div>
       </div>
     </footer>

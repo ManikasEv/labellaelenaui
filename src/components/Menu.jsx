@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { menuCategories, originDeclaration, dietaryTagLabels } from '../data/menu'
 import { summerMenuItems, summerMenuMeta } from '../data/summerMenu'
 import { getLunchMenuForDate } from '../data/lunchMenu'
@@ -12,7 +13,7 @@ const tagAbbrev = {
 
 const topSections = [
   { id: 'karte', title: 'Speisekarte' },
-  { id: 'sommer', title: 'Wildkarte', badge: 'Saison' },
+  { id: 'sommer', title: 'Monatsspezialitäten', badge: 'Saison' },
   { id: 'tages', title: 'Mittagsmenü' },
 ]
 
@@ -127,7 +128,7 @@ function SummerMenuPanel() {
           <p className="menu-feature-eyebrow">La Bella Elena · Hohle Gasse</p>
           <h4 className="font-display text-3xl text-olive">{summerMenuMeta.title}</h4>
         </div>
-        <span className="menu-feature-badge menu-feature-badge-summer">Wildsaison</span>
+        <span className="menu-feature-badge menu-feature-badge-summer">November</span>
       </div>
 
       <p className="menu-feature-intro">{summerMenuMeta.subtitle}</p>
@@ -182,8 +183,17 @@ function OriginDeclaration() {
 }
 
 export default function Menu() {
+  const location = useLocation()
   const [activeSection, setActiveSection] = useState('karte')
   const [activeCategoryId, setActiveCategoryId] = useState(menuCategories[0].id)
+
+  // Deep links from the homepage shortcut pills (router state)
+  const requestedSection = location.state?.menuSection
+  useEffect(() => {
+    if (requestedSection && topSections.some((s) => s.id === requestedSection)) {
+      setActiveSection(requestedSection)
+    }
+  }, [requestedSection, location.key])
 
   useEffect(() => {
     const hash = window.location.hash
@@ -215,15 +225,15 @@ export default function Menu() {
   }
 
   return (
-    <section id="menu" className="overflow-x-hidden bg-white py-16 sm:py-24 lg:py-32">
+    <section id="menu" className="relative overflow-x-hidden bg-white py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-3xl px-5 sm:px-6 lg:px-8">
-        <div className="mb-10 text-center sm:mb-12">
-          <p className="mb-3 text-sm font-medium tracking-[0.2em] text-terracotta uppercase">
-            Speisekarte
-          </p>
-          <h2 className="font-display mb-3 text-4xl text-charcoal lg:text-5xl">Menù</h2>
-          <p className="mx-auto max-w-lg text-sm text-charcoal/55">
-            Mittagsservice, Wildkarte und unsere klassische griechisch-italienische Karte.
+        <div className="mb-12 text-center sm:mb-14">
+          <h2 className="title-rule display display-lg text-charcoal">
+            <span>Menù</span>
+          </h2>
+          <p className="mt-3 text-sm font-medium tracking-[0.18em] text-charcoal/50 uppercase">Speisekarte</p>
+          <p className="mx-auto mt-5 max-w-lg text-[0.95rem] leading-relaxed text-charcoal/70 sm:text-base">
+            Mittagsservice, Monatsspezialitäten und unsere klassische griechisch-italienische Karte.
           </p>
         </div>
 
@@ -270,7 +280,7 @@ export default function Menu() {
           {activeSection === 'karte' && (
             <>
               <header className="menu-category-header">
-                <h3 className="font-display text-2xl text-olive">{activeCategory.title}</h3>
+                <h3 className="font-display text-2xl text-charcoal">{activeCategory.title}</h3>
               </header>
               {activeCategory.note && (
                 <p className="mb-5 text-center text-xs italic text-charcoal/45">
@@ -297,7 +307,7 @@ export default function Menu() {
 
         <OriginDeclaration />
 
-        <p className="mt-6 text-center text-xs text-charcoal/40">
+        <p className="mt-8 text-center text-[0.68rem] font-medium tracking-[0.18em] text-charcoal/40 uppercase">
           Alle Preise in CHF · Änderungen vorbehalten
         </p>
       </div>

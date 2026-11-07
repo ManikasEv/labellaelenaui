@@ -1,37 +1,43 @@
 export const summerMenuMeta = {
-  title: 'Wildkarte',
-  subtitle: 'Saisonale Wildgerichte — herzhaft und herbstlich',
+  title: 'Wild & Monatsspezialitäten',
+  subtitle: 'Saisonale Wildgerichte und Monatsspezialitäten',
   note: '',
 }
 
 export const summerMenuItems = [
   {
-    name: 'Rosa gebratenes Hirschkotelett',
+    name: 'Wildschweinkotelett',
     description:
-      'An einer feinen Wild-Waldbeerensauce, serviert mit hausgemachten Spätzli, geschmortem Rotkraut, Grünkohl, karamellisierten Maroni und pochierter Rotweinbirne',
-    prices: [
-      { label: 'Klein', price: '47.00' },
-      { label: 'Gross', price: '53.00' },
-    ],
+      'Serviert mit hausgemachten Spätzli, Rotkraut, Bohnen im Speckmantel und pochierter Herbstbirne',
+    price: '42.50',
   },
   {
-    name: 'Rosa gebratenes Rehschnitzel',
+    name: 'Rehschnitzel',
     description:
-      'An einer feinen Wild-Waldbeerensauce, serviert mit hausgemachten Spätzli, geschmortem Rotkraut, Grünkohl, karamellisierten Maroni und pochierter Herbstbirne',
-    prices: [
-      { label: 'Klein', price: '45.00' },
-      { label: 'Gross', price: '51.00' },
-    ],
+      'An feiner Wild-Waldbeerensauce, serviert mit hausgemachten Spätzli, Rotkraut, Rosenkohl, karamellisierten Maroni und pochierter Herbstbirne',
+    price: '51.00',
   },
   {
-    name: 'Zart geschmortes Wildschweingulasch',
-    description: 'Serviert mit hausgemachten Spätzli und traditionellem Apfel-Rotkraut',
-    price: '39.00',
+    name: 'Hirschschnitzel',
+    description:
+      'An feiner Wild-Waldbeerensauce, serviert mit hausgemachten Spätzli, Rotkraut, Rosenkohl, karamellisierten Maroni und pochierter Herbstbirne',
+    price: '49.00',
+  },
+  {
+    name: 'Hirschkotelett',
+    description:
+      'Serviert mit hausgemachten Spätzli, Rotkraut, Bohnen im Speckmantel und pochierter Herbstbirne',
+    price: '49.50',
   },
   {
     name: 'Vegetarischer Herbstteller',
     description:
-      'Sautierte Eierschwämmli an feiner Waldbeerensauce, serviert mit hausgemachten Spätzli, geschmortem Rotkraut, Grünkohl, karamellisierten Maroni und pochierter Herbstbirne',
+      'Eierschwämmli an feiner Waldbeerensauce, serviert mit hausgemachten Spätzli, Rotkraut, Rosenkohl, karamellisierten Maroni und pochierter Herbstbirne',
     price: '36.00',
+  },
+  {
+    name: 'Entrecôte mit Steinpilzen',
+    description: '220 g · Serviert mit Ofenkartoffel und Gemüse',
+    price: '46.00',
   },
 ]

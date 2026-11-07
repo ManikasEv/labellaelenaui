@@ -3,7 +3,9 @@ import { useLocation } from 'react-router-dom'
 import Hero from '../components/Hero'
 import About from '../components/About'
 import Gallery from '../components/Gallery'
+import Story from '../components/Story'
 import Menu from '../components/Menu'
+import Hours from '../components/Hours'
 import Contact from '../components/Contact'
 import SeoCrawlImages from '../components/SeoCrawlImages'
 import ScrollReveal from '../components/ScrollReveal'
@@ -54,8 +56,12 @@ export default function Home() {
       <ScrollReveal variant="gallery">
         <Gallery />
       </ScrollReveal>
+      <Story />
       <ScrollReveal variant="menu">
         <Menu />
+      </ScrollReveal>
+      <ScrollReveal variant="contact">
+        <Hours />
       </ScrollReveal>
       <ScrollReveal variant="contact">
         <Contact />

@@ -7,57 +7,59 @@ import { isWeekdayClosed } from './openingHours'
  */
 export const lunchMenuWeeks = [
   {
-    id: '2026-w43',
-    validFrom: '2026-10-19',
-    validUntil: '2026-10-25',
+    id: '2026-w46',
+    validFrom: '2026-11-09',
+    validUntil: '2026-11-15',
     starter: {
       name: 'Suppe oder Salat',
     },
     mains: [
       {
-        name: 'Würzig-italienische Salsiccia',
-        description: 'Mit Pommes frites und hausgemachter Bratensauce',
+        name: 'Kalbsbratwurst 200 g',
+        description: 'Mit cremigem Kartoffelstock und Zwiebelsauce',
         price: '22.50',
       },
       {
-        name: 'Mousaka vegetarisch',
+        name: 'Cremiges Risotto mit Wirsing',
         price: '19.50',
       },
     ],
   },
   {
-    id: '2026-w44',
-    validFrom: '2026-10-26',
-    validUntil: '2026-11-01',
+    id: '2026-w47',
+    validFrom: '2026-11-16',
+    validUntil: '2026-11-22',
     starter: {
       name: 'Suppe oder Salat',
     },
     mains: [
       {
-        name: 'Hausgemachte Hacktätschli',
-        description: 'Verfeinert mit Cheddar, serviert auf luftigem Kartoffelpüree',
+        name: 'Pouletbrust an Safransauce',
+        description: 'Mit Kartoffeln und Gemüse',
         price: '22.50',
       },
       {
-        name: 'Spaghetti pomodoro',
+        name: 'Ravioli Ricotta e Spinaci',
+        description: 'An Salbei-Buttersauce',
         price: '19.50',
       },
     ],
   },
   {
-    id: '2026-w45',
-    validFrom: '2026-11-02',
-    validUntil: '2026-11-08',
+    id: '2026-w48',
+    validFrom: '2026-11-23',
+    validUntil: '2026-11-29',
     starter: {
       name: 'Suppe oder Salat',
     },
     mains: [
       {
-        name: 'Ossobuco mit Risotto',
+        name: 'Schweinskotelett an Rahmsauce',
+        description: 'Mit Tagliatelle und Gemüse',
         price: '22.50',
       },
       {
-        name: 'Rigatoni quattro formaggi',
+        name: 'Penne alla Vodka',
         price: '19.50',
       },
     ],

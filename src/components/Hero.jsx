@@ -1,76 +1,113 @@
 import { Link } from 'react-router-dom'
-import { restaurantPhone, whatsappUrl } from '../data/location'
+import { restaurantPhone, restaurantEmail, whatsappUrl } from '../data/location'
+import { topLevelLinks } from '../data/siteNavigation'
+
+const menuShortcuts = [
+  { label: 'Speisekarte', section: 'karte' },
+  { label: 'Monatsspezialitäten', section: 'sommer' },
+  { label: 'Mittagsmenü', section: 'tages' },
+]
+
+function Chevron() {
+  return (
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2} aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+    </svg>
+  )
+}
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-[100dvh] w-full items-center justify-center overflow-hidden">
-      <img
-        src="/restaurant-cover.jpg"
-        alt="La Bella Elena — Restaurant an der Hohlen Gasse in Immensee mit Blick auf die Berge"
-        width={2400}
-        height={1260}
-        className="absolute inset-0 size-full object-cover object-center"
-        fetchPriority="high"
-        decoding="async"
-      />
-      <div className="absolute inset-0 bg-charcoal/30" />
-      <div className="absolute inset-0 bg-gradient-to-b from-olive-dark/70 via-olive/40 to-olive-dark/80" />
+    <>
+      {/* Full-viewport hero: photo fills the screen, shaded so the text reads */}
+      <section className="hero">
+        <div className="hero-media" aria-hidden="true">
+          <img
+            src="/restaurant-cover.jpg"
+            alt=""
+            width={2400}
+            height={1260}
+            fetchPriority="high"
+            decoding="async"
+          />
+        </div>
+        <div className="hero-shade" aria-hidden="true" />
 
-      <div className="relative z-10 mx-auto max-w-4xl px-4 py-24 text-center sm:px-6">
-        <p className="mb-4 text-xs font-medium tracking-[0.22em] text-cream/80 uppercase sm:text-sm sm:tracking-[0.3em]">
-          Griechisch-Italienisches Restaurant
-        </p>
+        <div className="hero-content">
+          <p className="hero-rise hero-rise-1 text-[0.6rem] font-semibold tracking-[0.32em] text-white/70 uppercase sm:text-[0.66rem]">
+            Griechisch-Italienisches Restaurant
+          </p>
+          <h1 className="hero-rise hero-rise-2 display hero-title mt-5 text-white">La Bella Elena</h1>
+          <p className="hero-rise hero-rise-2 display mt-3 text-lg text-white/85 sm:text-2xl">Hohle Gasse · Immensee</p>
 
-        <h1 className="font-display mb-6 text-4xl leading-tight text-cream sm:text-6xl lg:text-7xl">
-          La Bella Elena
-        </h1>
+          <p className="hero-rise hero-rise-3 mt-6 text-[0.9rem] leading-relaxed text-white/75 sm:text-base">
+            Hohle Gasse · Artherstrasse 38, 6405 Immensee
+            <br />
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/75 underline decoration-white/30 underline-offset-4 transition-colors hover:text-white"
+            >
+              WhatsApp · {restaurantPhone}
+            </a>
+          </p>
 
-        <p className="mx-auto mb-2 max-w-xl text-base leading-relaxed text-cream/90 sm:text-lg sm:text-xl">
-          Hohle Gasse<br className="sm:hidden" />
-          <span className="hidden sm:inline"> · </span>
-          Artherstrasse 38, 6405 Immensee
-        </p>
-
-        <p className="mb-8 text-sm leading-relaxed text-cream/70 sm:mb-10 sm:text-base">
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-colors hover:text-gold"
-          >
-            WhatsApp · {restaurantPhone}
-          </a>
-        </p>
-
-        <div className="flex w-full max-w-md flex-col items-stretch justify-center gap-3 sm:mx-auto sm:max-w-none sm:flex-row sm:items-center sm:gap-4">
-          <Link
-            to="/reservierung"
-            className="inline-flex items-center justify-center rounded-full bg-terracotta px-6 py-3.5 text-base font-medium text-cream shadow-lg transition-all hover:bg-terracotta-dark hover:shadow-xl sm:px-8"
-          >
-            Tisch reservieren
-          </Link>
-          <Link
-            to="/menu"
-            className="inline-flex items-center justify-center rounded-full border-2 border-cream/40 px-6 py-3.5 text-base font-medium text-cream transition-all hover:border-cream hover:bg-cream/10 sm:px-8"
-          >
-            Menü entdecken
-          </Link>
+          <div className="hero-rise hero-rise-3 mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Link to="/reservierung" className="btn btn-primary">
+              Tisch reservieren
+            </Link>
+            <Link to="/menu" className="btn btn-light">
+              Menü entdecken
+            </Link>
+          </div>
         </div>
 
-        <p className="mt-10 px-2 text-sm italic leading-relaxed text-cream/60 sm:mt-16">
-          «Una faccia, una razza — ob Griechenland oder Italien, am Ende zählt nur: dass es schmeckt wie bei Mamma.»
-        </p>
-      </div>
+        <span className="sr-only">
+          La Bella Elena — Restaurant an der Hohlen Gasse in Immensee mit Blick auf die Berge
+        </span>
 
-      <Link
-        to="/uber-uns"
-        aria-label="Weiter scrollen"
-        className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 animate-bounce text-cream/50 hover:text-cream"
-      >
-        <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
-      </Link>
-    </section>
+        <div className="hero-scroll hero-rise hero-rise-3" aria-hidden="true">
+          <span />
+        </div>
+      </section>
+
+      {/* Contact shortcuts + quick links — directly under the hero */}
+      <section className="bg-white">
+        <div className="flex justify-center gap-3 pt-10 sm:pt-12">
+          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="icon-circle" aria-label={`WhatsApp · ${restaurantPhone}`}>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6} aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 5.5A2.5 2.5 0 015.5 3h2.1a1 1 0 01.95.68l1.1 3.3a1 1 0 01-.25 1.03L8.1 9.3a12.5 12.5 0 006.6 6.6l1.3-1.3a1 1 0 011.03-.25l3.3 1.1a1 1 0 01.68.95v2.1A2.5 2.5 0 0118.5 21 15.5 15.5 0 013 5.5z" />
+            </svg>
+          </a>
+          <a href={`mailto:${restaurantEmail}`} className="icon-circle" aria-label={restaurantEmail}>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6} aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.5 6.5h17v11h-17z M3.5 7l8.5 6 8.5-6" />
+            </svg>
+          </a>
+        </div>
+
+        <div className="mx-auto max-w-5xl px-5 pt-7 pb-8 sm:pt-8 sm:pb-10">
+          <div className="flex flex-wrap justify-center gap-2.5">
+            {menuShortcuts.map((item) => (
+              <Link key={item.section} to="/menu" state={{ menuSection: item.section }} className="pill-link">
+                {item.label}
+                <Chevron />
+              </Link>
+            ))}
+            {topLevelLinks.map((link) => (
+              <Link key={link.path} to={link.path} className="pill-link">
+                {link.label}
+                <Chevron />
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <Link to="/uber-uns" aria-label="Weiter scrollen" className="sr-only">
+          Weiter scrollen
+        </Link>
+      </section>
+    </>
   )
 }
