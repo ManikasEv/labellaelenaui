@@ -15,7 +15,7 @@ function App() {
       <SeoHead />
       <ScrollToTop />
       <Navbar />
-      <main className="w-full min-w-0 overflow-x-hidden">
+      <main className="w-full min-w-0 overflow-x-clip">
         <Routes>
           <Route path="/" element={<Home />} />
           {homeSectionLinks.map((link) => (

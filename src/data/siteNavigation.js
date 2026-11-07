@@ -9,6 +9,7 @@ export const homeSectionLinks = [
   ...(showHeuteMenu
     ? [{ path: '/menu-heute', label: 'Heute', sectionId: 'menu-heute' }]
     : []),
+  { path: '/oeffnungszeiten', label: 'Öffnungszeiten', sectionId: 'oeffnungszeiten' },
   { path: '/kontakt', label: 'Kontakt', sectionId: 'kontakt' },
 ]
 
@@ -40,6 +41,11 @@ export const sectionMeta = {
   '/menu-heute': {
     title: 'Heute im Angebot — La Bella Elena, Immensee',
     description: 'Tagesgerichte und aktuelle Angebote bei La Bella Elena an der Hohlen Gasse.',
+  },
+  '/oeffnungszeiten': {
+    title: 'Öffnungszeiten — La Bella Elena, Restaurant Immensee',
+    description:
+      'Öffnungszeiten von La Bella Elena an der Hohlen Gasse, Artherstrasse 38, 6405 Immensee. Tisch reservieren unter +41 41 850 13 13.',
   },
   '/kontakt': {
     title: 'Kontakt — La Bella Elena, Artherstrasse 38, Immensee',

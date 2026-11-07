@@ -8,6 +8,7 @@ import {
   mapsSearchUrl,
   mapsDirectionsUrl,
 } from '../data/location'
+import CopyEmail from './CopyEmail'
 
 export default function Contact() {
   return (
@@ -47,9 +48,9 @@ export default function Contact() {
               <div>
                 <dt className="mb-1 text-[0.68rem] font-medium tracking-[0.18em] text-charcoal/45 uppercase">E-Mail</dt>
                 <dd>
-                  <a href={`mailto:${restaurantEmail}`} className="break-all text-[0.95rem] text-charcoal transition-colors hover:text-terracotta">
+                  <CopyEmail className="break-all text-left text-[0.95rem] text-charcoal transition-colors hover:text-terracotta">
                     {restaurantEmail}
-                  </a>
+                  </CopyEmail>
                 </dd>
               </div>
             </dl>

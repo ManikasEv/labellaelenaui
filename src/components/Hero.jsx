@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
-import { restaurantPhone, restaurantEmail, whatsappUrl } from '../data/location'
+import { restaurantPhone, whatsappUrl } from '../data/location'
 import { topLevelLinks } from '../data/siteNavigation'
+import CopyEmail from './CopyEmail'
 
 const menuShortcuts = [
   { label: 'Speisekarte', section: 'karte' },
@@ -67,24 +68,27 @@ export default function Hero() {
           La Bella Elena — Restaurant an der Hohlen Gasse in Immensee mit Blick auf die Berge
         </span>
 
-        <div className="hero-scroll hero-rise hero-rise-3" aria-hidden="true">
-          <span />
-        </div>
       </section>
 
       {/* Contact shortcuts + quick links — directly under the hero */}
       <section className="bg-white">
         <div className="flex justify-center gap-3 pt-10 sm:pt-12">
+          <Link to="/reservierung" className="icon-circle" aria-label="Tisch reservieren">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6} aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8 3v3m8-3v3M4 9h16M5 5h14a1 1 0 011 1v13a1 1 0 01-1 1H5a1 1 0 01-1-1V6a1 1 0 011-1z" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8 13h3v3H8z" />
+            </svg>
+          </Link>
           <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="icon-circle" aria-label={`WhatsApp · ${restaurantPhone}`}>
             <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6} aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 5.5A2.5 2.5 0 015.5 3h2.1a1 1 0 01.95.68l1.1 3.3a1 1 0 01-.25 1.03L8.1 9.3a12.5 12.5 0 006.6 6.6l1.3-1.3a1 1 0 011.03-.25l3.3 1.1a1 1 0 01.68.95v2.1A2.5 2.5 0 0118.5 21 15.5 15.5 0 013 5.5z" />
             </svg>
           </a>
-          <a href={`mailto:${restaurantEmail}`} className="icon-circle" aria-label={restaurantEmail}>
+          <CopyEmail className="icon-circle">
             <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6} aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3.5 6.5h17v11h-17z M3.5 7l8.5 6 8.5-6" />
             </svg>
-          </a>
+          </CopyEmail>
         </div>
 
         <div className="mx-auto max-w-5xl px-5 pt-7 pb-8 sm:pt-8 sm:pb-10">

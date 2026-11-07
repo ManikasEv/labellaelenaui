@@ -3,6 +3,7 @@ import {
   restaurantPhone,
   whatsappUrl,
 } from '../data/location'
+import CopyEmail from '../components/CopyEmail'
 
 export default function Impressum() {
   return (
@@ -67,12 +68,9 @@ export default function Impressum() {
             <ul className="space-y-2 text-charcoal/80">
               <li>
                 E-Mail:{' '}
-                <a
-                  href={`mailto:${restaurantEmail}`}
-                  className="break-all font-medium text-terracotta transition-colors hover:text-terracotta-dark"
-                >
+                <CopyEmail className="break-all font-medium text-terracotta transition-colors hover:text-terracotta-dark">
                   {restaurantEmail}
-                </a>
+                </CopyEmail>
               </li>
               <li>
                 Telefon:{' '}

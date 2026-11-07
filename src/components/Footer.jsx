@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { allSiteNavLinks } from '../data/siteNavigation'
 import { restaurantPhone, restaurantEmail, whatsappUrl } from '../data/location'
+import CopyEmail from './CopyEmail'
 
 export default function Footer() {
   const year = new Date().getFullYear()
@@ -43,9 +44,9 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href={`mailto:${restaurantEmail}`} className="break-all text-charcoal/80 transition-colors hover:text-terracotta">
+                <CopyEmail className="break-all text-left text-charcoal/80 transition-colors hover:text-terracotta">
                   {restaurantEmail}
-                </a>
+                </CopyEmail>
               </li>
             </ul>
           </div>
