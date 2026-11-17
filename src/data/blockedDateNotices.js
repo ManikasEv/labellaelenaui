@@ -29,6 +29,18 @@ const blockedDateNotices = [
       'Samstag, 21. November ist ausgebucht (Gruppenreservation). Bitte wählen Sie ein anderes Datum.',
     visibleUntil: '2026-11-22',
   },
+  {
+    date: '2026-11-22',
+    message:
+      'Sonntag, 22. November: wegen Renovation geschlossen. Bitte wählen Sie ein anderes Datum.',
+    visibleUntil: '2026-11-24',
+  },
+  {
+    date: '2026-11-23',
+    message:
+      'Montag, 23. November: wegen Renovation geschlossen. Bitte wählen Sie ein anderes Datum.',
+    visibleUntil: '2026-11-24',
+  },
 ]
 
 function parseLocalDate(isoDate) {
