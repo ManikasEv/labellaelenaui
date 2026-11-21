@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import SeoHead from './components/SeoHead'
 import ScrollToTop from './components/ScrollToTop'
+import MobileDock from './components/MobileDock'
 import Home from './pages/Home'
 import Reservation from './pages/Reservation'
 import Standort from './pages/Standort'
@@ -26,6 +27,7 @@ function App() {
           <Route path="/impressum" element={<Impressum />} />
         </Routes>
       </main>
+      <MobileDock />
       <Footer />
     </>
   )

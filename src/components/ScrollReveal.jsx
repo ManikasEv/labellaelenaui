@@ -11,35 +11,35 @@ const variants = {
     },
   },
   about: {
-    hidden: { opacity: 0, y: 40 },
+    hidden: { opacity: 0, y: 28 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.9, ease: easeOut },
+      transition: { duration: 0.75, ease: easeOut },
     },
   },
   gallery: {
-    hidden: { opacity: 0, y: 48 },
+    hidden: { opacity: 0, y: 32 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.9, ease: easeOut },
+      transition: { duration: 0.8, ease: easeOut },
     },
   },
   menu: {
-    hidden: { opacity: 0, y: 40 },
+    hidden: { opacity: 0, y: 28 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.9, ease: easeOut },
+      transition: { duration: 0.75, ease: easeOut },
     },
   },
   contact: {
-    hidden: { opacity: 0, y: 40 },
+    hidden: { opacity: 0, y: 28 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.9, ease: easeOut },
+      transition: { duration: 0.75, ease: easeOut },
     },
   },
 }

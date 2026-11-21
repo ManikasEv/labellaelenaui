@@ -209,20 +209,20 @@ export default function Navbar() {
             />
 
             <motion.div
-              className="mobile-nav-panel absolute inset-x-0 top-0 flex max-h-[100dvh] min-h-[100dvh] flex-col bg-white shadow-xl"
+              className="mobile-nav-panel absolute inset-x-0 top-0 flex max-h-[100dvh] min-h-[100dvh] flex-col bg-cream shadow-xl"
               style={{ paddingTop: 'calc(env(safe-area-inset-top, 0px) + 5.5rem)' }}
               {...panelMotion}
             >
-              <nav className="relative flex flex-1 flex-col justify-center gap-1 px-8 pb-[max(2rem,env(safe-area-inset-bottom))]">
+              <nav className="relative flex flex-1 flex-col justify-center gap-0.5 px-7 pb-[max(2.5rem,env(safe-area-inset-bottom))] sm:px-8">
                 {navLinks.map((link, index) => (
                   <motion.div key={link.to} {...linkMotion(index, reducedMotion)}>
                     <Link
                       to={link.to}
                       onClick={closeMenu}
-                      className="display flex w-full items-center justify-between border-b border-charcoal/10 py-4 text-[1.9rem] text-charcoal transition-colors duration-200 hover:text-terracotta active:bg-charcoal/5"
+                      className="display flex w-full items-center justify-between border-b border-charcoal/8 py-4 text-[1.75rem] text-charcoal transition-colors duration-200 hover:text-terracotta active:bg-white/60"
                     >
                       {link.label}
-                      <svg className="h-4 w-4 text-charcoal/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+                      <svg className="h-4 w-4 text-charcoal/35" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                       </svg>
                     </Link>
@@ -230,15 +230,22 @@ export default function Navbar() {
                 ))}
 
                 <motion.div
-                  className="mt-8 w-full"
+                  className="mt-9 w-full space-y-3"
                   {...linkMotion(navLinks.length, reducedMotion)}
                 >
                   <Link
                     to="/reservierung"
                     onClick={closeMenu}
-                    className="btn btn-primary w-full transition-transform duration-200 active:scale-[0.98]"
+                    className="btn btn-primary w-full min-h-12 transition-transform duration-200 active:scale-[0.98]"
                   >
                     Tisch reservieren
+                  </Link>
+                  <Link
+                    to="/menu"
+                    onClick={closeMenu}
+                    className="btn btn-outline w-full min-h-12 transition-transform duration-200 active:scale-[0.98]"
+                  >
+                    Menü entdecken
                   </Link>
                 </motion.div>
               </nav>

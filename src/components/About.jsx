@@ -5,14 +5,14 @@ const teamLine = `${team.slice(0, -1).join(', ')} & ${team[team.length - 1]}`
 
 export default function About() {
   return (
-    <section id="uber-uns" className="bg-white py-16 sm:py-20 lg:py-28">
+    <section id="uber-uns" className="bg-white py-14 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <div className="grid items-center gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
-          <figure className="img-zoom m-0">
+        <div className="grid items-center gap-8 sm:gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+          <figure className="img-zoom m-0 overflow-hidden rounded-[0.55rem] sm:rounded-none">
             <img
               src={aboutImage}
               alt="Gemütlicher Innenbereich von La Bella Elena"
-              className="block aspect-[4/5] h-auto w-full object-cover"
+              className="block aspect-[5/4] h-auto w-full object-cover sm:aspect-[4/5]"
               loading="lazy"
             />
           </figure>
@@ -26,7 +26,7 @@ export default function About() {
             </h2>
             <p className="subtitle mt-4 text-charcoal/85">{teamLine}</p>
 
-            <p className="mt-7 text-[0.95rem] leading-relaxed text-charcoal/75">
+            <p className="mt-6 text-[0.95rem] leading-relaxed text-charcoal/75 sm:mt-7">
               Wir sind Elena, Angelos und Alessio — ein Trio, das so viel mediterranes Temperament
               im Blut hat, dass wir eigentlich eine eigene Stromrechnung bräuchten.
             </p>
