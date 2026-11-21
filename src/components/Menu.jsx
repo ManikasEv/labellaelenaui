@@ -124,9 +124,9 @@ function SummerMenuPanel() {
   return (
     <div className="menu-feature-card menu-feature-card-summer">
       <div className="menu-feature-header">
-        <div>
+        <div className="menu-feature-heading">
           <p className="menu-feature-eyebrow">La Bella Elena · Hohle Gasse</p>
-          <h4 className="font-display text-3xl text-olive">{summerMenuMeta.title}</h4>
+          <h4 className="menu-feature-title font-display text-olive">{summerMenuMeta.title}</h4>
         </div>
         <span className="menu-feature-badge menu-feature-badge-summer">November</span>
       </div>

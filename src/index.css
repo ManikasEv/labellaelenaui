@@ -379,10 +379,11 @@ h4 {
   bottom: 1.25rem;
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(1.35rem, 2.2vw, 1.7rem);
-  line-height: 1.05;
+  font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+  line-height: 1.08;
   letter-spacing: -0.015em;
   text-wrap: balance;
+  overflow-wrap: anywhere;
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -1036,10 +1037,24 @@ h4 {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.85rem 1rem;
   margin-bottom: 1.1rem;
   padding-bottom: 1.1rem;
   border-bottom: 1px solid color-mix(in srgb, var(--color-charcoal) 10%, transparent);
+}
+
+.menu-feature-heading {
+  min-width: 0;
+  flex: 1;
+}
+
+.menu-feature-title {
+  font-size: clamp(1.45rem, 5.5vw, 1.9rem);
+  line-height: 1.15;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
 }
 
 .menu-feature-eyebrow {
@@ -1053,6 +1068,7 @@ h4 {
 
 .menu-feature-badge {
   flex-shrink: 0;
+  align-self: flex-start;
   border-radius: 9999px;
   padding: 0.4rem 0.8rem;
   font-size: 0.62rem;
@@ -1061,6 +1077,53 @@ h4 {
   text-transform: uppercase;
   color: var(--color-olive-dark);
   background: color-mix(in srgb, var(--color-olive) 12%, transparent);
+  white-space: nowrap;
+}
+
+@media (max-width: 639px) {
+  .menu-feature-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu-feature-heading {
+    width: 100%;
+  }
+
+  .menu-feature-badge {
+    order: -1;
+  }
+
+  .menu-feature-card {
+    padding: 1.2rem;
+    overflow: hidden;
+  }
+
+  .menu-lunch-dish-head {
+    gap: 0.65rem;
+  }
+
+  .menu-lunch-dish-head .font-display {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .menu-section-nav {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+  }
+
+  .menu-section-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.7rem 0.95rem;
+    font-size: 0.86rem;
+  }
+
+  #menu {
+    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+  }
 }
 
 .menu-feature-badge-summer {
@@ -1268,11 +1331,13 @@ h4 {
 }
 
 .menu-row-name {
-  flex-shrink: 0;
+  flex: 0 1 auto;
+  min-width: 0;
   max-width: 78%;
   font-size: 1.15rem;
   line-height: 1.3;
   font-weight: 500;
+  overflow-wrap: anywhere;
 }
 
 .menu-row-leader {
